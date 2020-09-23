@@ -1,8 +1,8 @@
-package JDBC;
+package FMS;
 
 import java.sql.*;
 
-public class TestConnection {
+public class MainTest {
     public static void main(String[] args) throws SQLException {
 
         DatabaseConnection singleton1 = DatabaseConnection.getInstance();
