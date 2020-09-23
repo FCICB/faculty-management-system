@@ -3,12 +3,9 @@
 //22-September-2020
 
 
-package JDBC;
+package FMS;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
 
 
 public class DatabaseConnection {
@@ -19,27 +16,13 @@ public class DatabaseConnection {
     private static String password;
     private static String url;
     private static Connection connection;
-    private static FileInputStream configFile;
 
     //default constructor accessed only by method getInstance()
-    private DatabaseConnection() {
-
-        // Load the properties file
-        Properties prop=new Properties();
-        try {
-            configFile = new FileInputStream("resources/config.properties");
-            prop.load(configFile);
-            configFile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // reading database connection info from properties file
-        dbDriver = prop.getProperty("dbDriver");
-        userName = prop.getProperty("userName");
-        password = prop.getProperty("password");
-        url = prop.getProperty("url");
-
+    private DatabaseConnection(){
+        dbDriver = "com.mysql.cj.jdbc.Driver";
+        userName = "root"; //insert your username here
+        password = "123456"; //insert your password here
+        url = "jdbc:mysql://localhost:3306/fms";
         try {
             Class.forName(dbDriver);
             connection = DriverManager.getConnection(url, userName, password);
@@ -49,7 +32,7 @@ public class DatabaseConnection {
     }
 
     //To get the only DatabaseConnection object existing in the system or create a new one
-    public static DatabaseConnection getInstance() {
+    public static DatabaseConnection getInstance(){
         if (instance == null) {
             //This is to check first if a new object will be created, in that case it will perform synchronization
             synchronized (DatabaseConnection.class) {
