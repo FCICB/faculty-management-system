@@ -3,7 +3,7 @@
 //22-September-2020
 
 
-package JDBC;
+package jdbc;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,31 +19,25 @@ public class DatabaseConnection {
     private static String password;
     private static String url;
     private static Connection connection;
-    private static FileInputStream configFile;
 
     //default constructor accessed only by method getInstance()
     private DatabaseConnection() {
 
-        // Load the properties file
-        Properties prop=new Properties();
-        try {
-            configFile = new FileInputStream("resources/config.properties");
+        try (FileInputStream configFile = new FileInputStream("resources/config.properties"))
+        {
+            // Load the properties file
+            Properties prop=new Properties();
             prop.load(configFile);
-            configFile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        // reading database connection info from properties file
-        dbDriver = prop.getProperty("dbDriver");
-        userName = prop.getProperty("userName");
-        password = prop.getProperty("password");
-        url = prop.getProperty("url");
+            // reading database connection info from properties file
+            dbDriver = prop.getProperty("dbDriver");
+            userName = prop.getProperty("userName");
+            password = prop.getProperty("password");
+            url = prop.getProperty("url");
 
-        try {
             Class.forName(dbDriver);
             connection = DriverManager.getConnection(url, userName, password);
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException | SQLException | IOException e) {
             e.printStackTrace();
         }
     }
