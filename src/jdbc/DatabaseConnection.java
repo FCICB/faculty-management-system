@@ -35,9 +35,9 @@ public class DatabaseConnection {
             password = prop.getProperty("password");
             url = prop.getProperty("url");
 
-            Class.forName(dbDriver);
+           
             connection = DriverManager.getConnection(url, userName, password);
-        } catch (ClassNotFoundException | SQLException | IOException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
