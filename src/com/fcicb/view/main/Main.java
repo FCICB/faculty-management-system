@@ -1,4 +1,4 @@
-package com.fcicb;
+package com.fcicb.view.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-  Parent root = FXMLLoader.load(getClass().getResource("../../sample/login.fxml"));
+  Parent root = FXMLLoader.load(getClass().getResource("../../view/sample/login.fxml"));
 
         primaryStage.setScene(new Scene(root ));
         primaryStage.setTitle("FMS");

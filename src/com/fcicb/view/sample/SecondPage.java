@@ -1,4 +1,4 @@
-package sample;
+package com.fcicb.view.sample;
 
 import javafx.fxml.Initializable;
 
