@@ -20,9 +20,9 @@ public class Login implements Initializable {
        @FXML private CheckBox admin;
        Alert a = new Alert(Alert.AlertType.NONE) ;
        @FXML Label error_label=new Label("Valid");
-       private String pattern ="^[A-Za-z0-9+_.-]+@(.+)$";
+       private final String pattern ="^[A-Za-z0-9+_.-]+@(.+)$";
 
-      private void iftheDataRight(javafx.event.ActionEvent event) throws IOException
+      private void validateData(javafx.event.ActionEvent event) throws IOException
       {
           Parent tableview = FXMLLoader.load(getClass().getResource("secondPage.fxml"));
           Scene tablescene = new Scene(tableview);
@@ -50,17 +50,17 @@ public class Login implements Initializable {
 
 
          //  CALL Your FUNCTION
-  /*    if   (adminOrNot()&&(userMail.getText()).matches(pattern))
+    if   (adminOrNot()&&(userMail.getText()).matches(pattern))
            {
-              iftheDataRight(event);
+              validateData(event);
            }
-      else if ()
+  /*    else if ()
            {
-             iftheDataRight(event);
+             validateData(event);
            }
      else
           {
-              Errorinlogin();
+              errorInLogin();
           }
 */
      }
@@ -72,7 +72,7 @@ public class Login implements Initializable {
 
        if(!(userMail.getText()).matches(pattern) )
         {
-            error_label.setText("Invalid");
+            error_label.setText("Invalid email address");
             error_label.setStyle("-fx-text-fill:red");
             return true;
         }
@@ -91,8 +91,8 @@ public class Login implements Initializable {
 
 
     
-  //  private void Errorinlogin(javafx.event.ActionEvent event) throws IOException
-    private void Errorinlogin()
+  //  private void errorInLogin(javafx.event.ActionEvent event) throws IOException
+    private void errorInLogin()
     {
         a.setAlertType(Alert.AlertType.ERROR);
         a.setContentText("Invalid Email or password ");
