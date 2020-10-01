@@ -1,4 +1,4 @@
-package sample;
+package com.fcicb.view.sample;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

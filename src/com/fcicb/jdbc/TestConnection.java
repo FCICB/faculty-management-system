@@ -1,4 +1,4 @@
-package jdbc;
+package com.fcicb.jdbc;
 
 import java.sql.*;
 
