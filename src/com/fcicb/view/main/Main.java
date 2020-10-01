@@ -1,5 +1,6 @@
 package com.fcicb.view.main;
 
+import com.fcicb.jaas.authentication.ConsoleCallbackHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
