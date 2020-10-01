@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60b64e91-b140-4652-a0e8-42dfa4e44c5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_21.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_211.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faculty-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/faculty-management-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +82,7 @@
       <workItem from="1600590628062" duration="1406000" />
       <workItem from="1601286063537" duration="13151000" />
       <workItem from="1601459935373" duration="2023000" />
-      <workItem from="1601546872826" duration="552000" />
+      <workItem from="1601546872826" duration="878000" />
     </task>
     <task id="LOCAL-00001" summary="remove unwanted comments , &#10;clear unused imports &#10;convert project to run on java 8 not 14 &#10;organize and reformat">
       <created>1601286928558</created>
@@ -116,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601400176333</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="edit project dependency">
+      <created>1601547661332</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1601547661332</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,10 +144,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="321" y="77" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.680@0.0.1280.680" timestamp="1600590087714" />
-    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1601400175247">
+    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1601547659282">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1601400175247" />
+    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1601547659282" />
     <state x="70" y="117" key="DiffContextDialog" timestamp="1601306199924">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -161,34 +164,34 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="373" y="36" key="Github.UntrackedFilesDialog/0.0.1280.680@0.0.1280.680" timestamp="1600484128082" />
-    <state width="1237" height="156" key="GridCell.Tab.0.bottom" timestamp="1601547322703">
+    <state width="1237" height="156" key="GridCell.Tab.0.bottom" timestamp="1601547728202">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="156" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1601547322703" />
-    <state width="1237" height="156" key="GridCell.Tab.0.center" timestamp="1601547322703">
+    <state width="1237" height="156" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1601547728202" />
+    <state width="1237" height="156" key="GridCell.Tab.0.center" timestamp="1601547728202">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="156" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1601547322703" />
-    <state width="1237" height="156" key="GridCell.Tab.0.left" timestamp="1601547322703">
+    <state width="1237" height="156" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1601547728202" />
+    <state width="1237" height="156" key="GridCell.Tab.0.left" timestamp="1601547728202">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="156" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1601547322703" />
-    <state width="1237" height="156" key="GridCell.Tab.0.right" timestamp="1601547322703">
+    <state width="1237" height="156" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1601547728202" />
+    <state width="1237" height="156" key="GridCell.Tab.0.right" timestamp="1601547728202">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="156" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1601547322703" />
+    <state width="1237" height="156" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1601547728202" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1601547304133">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1601547304133" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1601400182912">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1601547669758">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1601400182912" />
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601547029207">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1601547669758" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601547694595">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1601547029207" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1601547694595" />
     <state x="327" y="129" key="git4idea.merge.GitPullDialog" timestamp="1600535515995">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
