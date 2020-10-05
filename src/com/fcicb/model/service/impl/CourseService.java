@@ -32,7 +32,9 @@ public class CourseService implements Service<Course> {
 
     @Override
     public List<Course> getAll() {
-        return null;
+
+        return courseDao.getAll();
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.fcicb.jaas.authentication;
 
+import com.fcicb.jdbc.DatabaseConnection;
 import com.sun.security.auth.UserPrincipal;
 import javax.security.auth.Subject;
 import javax.security.auth.callback.*;
@@ -7,17 +8,19 @@ import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
 import java.io.IOException;
 import java.security.Principal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class InMemoryLoginModule implements LoginModule {
+    DatabaseConnection instance = DatabaseConnection.getInstance();
 
-    private static final String USERNAME = "testuser";
-    private static final String PASSWORD = "testpassword";
 
     private Subject subject;
     public Principal userPrincipal;
     private CallbackHandler callbackHandler;
-
     private boolean loginSucceeded = false;
 
 
@@ -32,18 +35,33 @@ public class InMemoryLoginModule implements LoginModule {
     public boolean login()  {
         NameCallback nameCallback = new NameCallback("username: ");
         PasswordCallback passwordCallback = new PasswordCallback("password: ", false);
+        String username;
+        String password;
+        PreparedStatement list =null ;
+        ResultSet rst = null;
         try {
-            callbackHandler.handle(new Callback[]{nameCallback, passwordCallback});
-            String username = nameCallback.getName();
-            String password =  new String(passwordCallback.getPassword());
-            if (USERNAME.equals(username) && PASSWORD.equals(password)) {
+            Connection connection = instance.getConnection();
+            list = connection.prepareStatement("SELECT username , password  FROM admin");
+            rst = list.executeQuery();
+
+            while(rst.next())
+            {
+                 callbackHandler.handle(new Callback[]{nameCallback, passwordCallback});
+             username = nameCallback.getName();
+             password =  new String(passwordCallback.getPassword());
+            if (rst.getString(1).equals(username) && rst.getString(2).equals(password)) {
                 loginSucceeded = true;
                 userPrincipal = new UserPrincipal(username);
                 subject.getPrincipals().add(userPrincipal);
             }
-        } catch (IOException | UnsupportedCallbackException e) {
+
+
+
+            }
+        } catch (IOException | UnsupportedCallbackException | SQLException e) {
             e.printStackTrace();
         }
+
         return loginSucceeded;
     }
 

@@ -17,12 +17,11 @@ public class Student {
     private String lname;
     private String email;
     private String password;
-    private Date createdAt;
     private int deletedBy;
     private int addedBy;
 
     public Student(int id, String username, float gpa, Date birthDate,studentState state, int level, int completedHours,
-                   String fname, String lname, String email, String password, Date createdAt, int deletedBy, int addedBy) {
+                   String fname, String lname, String email, String password,  int deletedBy, int addedBy) {
         this.id = id;
         this.username = username;
         this.gpa = gpa;
@@ -34,7 +33,6 @@ public class Student {
         this.lname = lname;
         this.email = email;
         this.password = password;
-        this.createdAt = createdAt;
         this.deletedBy = deletedBy;
         this.addedBy = addedBy;
     }
@@ -128,14 +126,6 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     public int getDeletedBy() {
