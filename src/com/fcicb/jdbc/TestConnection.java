@@ -9,7 +9,7 @@ public class TestConnection {
 
         //Sample Query to test connection
         final String SELECT_QUERY =
-                "SELECT lname, fname, student_id FROM Student WHERE student_id=3";
+                "SELECT id , username FROM student WHERE id=3";
         try (Connection conn = singleton1.getConnection();
              Statement statement = conn.createStatement();
              ResultSet resultSet = statement.executeQuery(SELECT_QUERY)){

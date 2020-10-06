@@ -48,7 +48,7 @@
         </ImageView>
         <StackPane layoutX="146.0" layoutY="184.0" prefHeight="77.0" prefWidth="299.0">
             <children>
-                <TextField fx:id="userMail" onAction="#isValidName" onKeyReleased="#isValidName" opacity="0.54" prefHeight="37.0" prefWidth="302.0" promptText="Email">
+                <TextField fx:id="userMail"   opacity="0.54" prefHeight="37.0" prefWidth="302.0" promptText="User Name">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>

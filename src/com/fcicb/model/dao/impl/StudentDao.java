@@ -20,8 +20,9 @@ public class StudentDao implements Dao<Student> {
 
         int result ;
 
-        try (Connection connection = instance.getConnection()) {
-            PreparedStatement insert = connection.prepareStatement("INSERT INTO student  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        try {
+            Connection connection = instance.getConnection();
+            PreparedStatement insert = connection.prepareStatement("INSERT INTO student  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
                 insert.setInt(1, item.getId());
                 insert.setString(2, item.getUsername());
@@ -33,9 +34,8 @@ public class StudentDao implements Dao<Student> {
                 insert.setString(8, item.getFname());
                 insert.setString(9, item.getLname());
                 insert.setString(10, item.getEmail());
-                insert.setDate(11, (Date) item.getCreatedAt());
-                insert.setInt(12, item.getDeletedBy());
-                insert.setInt(13, item.getDeletedBy());
+                insert.setInt(11, item.getDeletedBy());
+
 
             result=insert.executeUpdate();
 
@@ -57,8 +57,8 @@ public class StudentDao implements Dao<Student> {
 
         int result ;
 
-        try (Connection connection = instance.getConnection()) {
-
+        try  {
+            Connection connection = instance.getConnection();
             PreparedStatement delete = connection.prepareStatement("DELETE FROM student  WHERE id = ? ");
             delete.setInt(1, student.getId());
 
@@ -76,8 +76,8 @@ public class StudentDao implements Dao<Student> {
     public boolean deactivate(Student student){
         int result;
 
-        try (Connection connection = instance.getConnection()) {
-
+        try  {
+            Connection connection = instance.getConnection();
             PreparedStatement deactivate = connection.prepareStatement("UPDATE  student  account_activated = 'Deactivated' WHERE id = ? ");
             deactivate.setInt(1, student.getId());
 
@@ -95,8 +95,8 @@ public class StudentDao implements Dao<Student> {
     public boolean reactivate(Student student){
         int result;
 
-        try (Connection connection = instance.getConnection()) {
-
+        try  {
+            Connection connection = instance.getConnection();
             PreparedStatement reactivated = connection.prepareStatement("UPDATE  student  account_activated = 'Activated' WHERE id = ? ");
             reactivated.setInt(1, student.getId());
 

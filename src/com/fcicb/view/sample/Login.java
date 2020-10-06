@@ -1,7 +1,9 @@
 package com.fcicb.view.sample;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import com.fcicb.jaas.authentication.ConsoleCallbackHandler;
 import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,24 +12,30 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
 
 
 public class Login implements Initializable {
 
 
+
        @FXML private TextField userMail ,userPassword;
-       private String userEmailCheck ,userPasswordCheck;
+
+       public  static String userEmailCheck ,userPasswordCheck;
        @FXML private CheckBox admin;
        Alert a = new Alert(Alert.AlertType.NONE) ;
        @FXML Label error_label=new Label("Valid");
-       private final String pattern ="^[A-Za-z0-9+_.-]+@(.+)$";
+
 
       private void validateData(javafx.event.ActionEvent event) throws IOException
       {
-          Parent tableview = FXMLLoader.load(getClass().getResource("secondPage.fxml"));
+          Parent tableview = FXMLLoader.load(getClass().getResource("admin/adminDashBoard.fxml"));
           Scene tablescene = new Scene(tableview);
           Stage windows = (Stage)((Node)event.getSource()).getScene().getWindow();
+          windows.setResizable(true);
           windows.setScene(tablescene);
+
           windows.show();
 
       }
@@ -43,55 +51,45 @@ public class Login implements Initializable {
 
 
 // button action
- public  void loginButton(javafx.event.ActionEvent event) throws IOException
-         {
-             userEmailCheck =  userMail.getText();
-             userPasswordCheck =  userPassword.getText();
+ public  void loginButton(javafx.event.ActionEvent event) throws IOException {
+     userEmailCheck = userMail.getText();
+     userPasswordCheck = userPassword.getText();
+     boolean test =false;
+   //LoginContext
+     System.setProperty("java.security.auth.login.config", "resources/jaas.config");
+     LoginContext loginContext = null;
+     try {
+         loginContext = new LoginContext("loadloginmodule", new ConsoleCallbackHandler());
 
-
-         //  CALL Your FUNCTION
-    if   (adminOrNot()&&(userMail.getText()).matches(pattern))
-           {
-              validateData(event);
-           }
-  /*    else if ()
-           {
-             validateData(event);
-           }
-     else
-          {
-              errorInLogin();
-          }
-*/
+     } catch (LoginException e) {
+         e.printStackTrace();
      }
+         try
+         {
+             assert loginContext != null;
+             loginContext.login();
+             Login login =new Login();
+             if (adminOrNot())
+             {
+                 login.validateData(event);
+             }
+             else
+             {
+                 errorInLogin();
+             }
 
 
-    @FXML
-    private boolean isValidName(){
+         }
+         catch (LoginException e)
+         {
 
-
-       if(!(userMail.getText()).matches(pattern) )
-        {
-            error_label.setText("Invalid email address");
-            error_label.setStyle("-fx-text-fill:red");
-            return true;
-        }
-
-       else
-        {
-            this.error_label.setText(" ");
-            return false;
-        }
-    }
+             errorInLogin();
+         }
 
 
 
 
-
-
-
-    
-  //  private void errorInLogin(javafx.event.ActionEvent event) throws IOException
+ }
     private void errorInLogin()
     {
         a.setAlertType(Alert.AlertType.ERROR);
@@ -105,5 +103,9 @@ public class Login implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.error_label.setText(" ");
 
+    }
+
+    public String getTestUser(){
+          return  userEmailCheck;
     }
 }
