@@ -112,6 +112,29 @@ public class StudentDao implements Dao<Student> {
     }
 
 
+    public float calculateGPA(Student student){
+
+        float totalGradePoints = 0;
+
+        try  {
+            Connection connection = instance.getConnection();
+            PreparedStatement conn = connection.prepareStatement
+                                                (" SELECT SUM(grade) AS 'totalGrades'" +
+                                                        " FROM studentCourse " +
+                                                        " WHERE id = ? ");
+            conn.setInt(1, student.getId());
+
+            totalGradePoints = conn.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalGradePoints / student.getCompletedHours() ;
+    }
+
+
     @Override
     public boolean add(List<Student> items) {
         return false;

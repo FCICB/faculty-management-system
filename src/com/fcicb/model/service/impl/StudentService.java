@@ -40,7 +40,9 @@ public class StudentService implements Service<Student> {
             return studentDao.deactivate(item);
     }
 
-
+    public float calculateGpa(Student item){
+        return studentDao.calculateGPA(item);
+    }
 
     @Override
     public boolean add(List<Student> items) {
