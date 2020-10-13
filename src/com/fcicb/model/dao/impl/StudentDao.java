@@ -4,6 +4,7 @@ package com.fcicb.model.dao.impl;
 import com.fcicb.domain.Student;
 import com.fcicb.jdbc.DatabaseConnection;
 import com.fcicb.model.dao.Dao;
+import com.fcicb.utilities.JavaMailUtil;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -37,10 +38,11 @@ public class StudentDao implements Dao<Student> {
                 insert.setInt(11, item.getDeletedBy());
 
 
-            result=insert.executeUpdate();
+            result = insert.executeUpdate();
 
             if(result != 0)
             {
+                JavaMailUtil.sendMail(item.getEmail(), item.getPassword());
                 return true;
             }
 
