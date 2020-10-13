@@ -46,7 +46,7 @@
             <center>
                 <VBox prefHeight="833.0" prefWidth="1021.0" spacing="5.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Label alignment="CENTER" onMouseClicked="#showStudents" prefHeight="45.0" prefWidth="215.0" style="-fx-background-radius: 80; -fx-background-color: #ff9800;" text="Students Data" textFill="#e3dfde">
+                        <Label alignment="CENTER" onMouseClicked="#showStudents" prefHeight="45.0" prefWidth="219.0" style="-fx-background-radius: 80; -fx-background-color: #ff9800;" text="Students Data" textFill="#e3dfde">
                             <font>
                                 <Font name="Dyuthi" size="20.0" />
                             </font></Label>
@@ -56,14 +56,12 @@
                                     <children>
                                         <TableView fx:id="tableview" prefHeight="389.0" prefWidth="1905.0" AnchorPane.bottomAnchor="-44.0">
                                             <columns>
-                                                <TableColumn prefWidth="85.0" text="id" />
-                                                <TableColumn prefWidth="344.0000305175781" text="User Name " />
-                                                <TableColumn prefWidth="273.0" text="First Name" />
-                                                <TableColumn prefWidth="242.0" text="Last Name" />
-                                                <TableColumn prefWidth="407.0" text="Email" />
-                                                <TableColumn prefWidth="283.0" text="Password" />
-                                                <TableColumn minWidth="0.0" prefWidth="70.0" text="Level" />
-                                                <TableColumn prefWidth="199.0" text="Birth date" />
+                                                <TableColumn fx:id="idTableColumn" prefWidth="85.0" text="id" />
+                                                <TableColumn fx:id="userNameTableColumn" prefWidth="344.0000305175781" text="User Name " />
+                                                <TableColumn fx:id="firstNameTableColumn" prefWidth="273.0" text="First Name" />
+                                                <TableColumn fx:id="lastNameTableColumn" prefWidth="242.0" text="Last Name" />
+                                                <TableColumn fx:id="emailTableColumn" prefWidth="407.0" text="Email" />
+                                                <TableColumn fx:id="passwordTableColumn" prefWidth="283.0" text="Password" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -72,12 +70,7 @@
                         </ScrollPane>
                         <AnchorPane prefHeight="74.0" prefWidth="1021.0">
                             <children>
-                                <Button layoutX="565.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 90; -fx-background-color: #ff9800;" text="Delete" textFill="#212121" AnchorPane.rightAnchor="228.0">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Button>
-                                <Button layoutX="177.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="183.0" style="-fx-background-color: #ff9800; -fx-background-radius: 90;" text="search" textFill="#212121" AnchorPane.leftAnchor="177.0">
+                                <Button layoutX="435.0" mnemonicParsing="false" onAction="#delete" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 90; -fx-background-color: #ff9800;" text="Delete" textFill="#212121" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="416.0">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -94,19 +87,10 @@
                                         <Font name="Cortoba" size="20.0" />
                                     </font>
                                 </Label>
-                                <VBox layoutX="124.0" layoutY="20.0" prefHeight="450.0" prefWidth="257.0" spacing="20.0" AnchorPane.leftAnchor="124.0">
+                                <VBox layoutX="124.0" layoutY="20.0" prefHeight="477.0" prefWidth="263.0" spacing="20.0" AnchorPane.leftAnchor="124.0">
                                     <children>
-                                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                        <AnchorPane prefHeight="394.0" prefWidth="263.0">
                                             <children>
-                                                <StackPane prefHeight="58.0" prefWidth="252.0">
-                                                    <children>
-                                                        <Label alignment="CENTER" prefHeight="49.0" prefWidth="103.0" text="ID" textFill="#ff9800">
-                                                            <font>
-                                                                <Font name="System Bold" size="13.0" />
-                                                            </font>
-                                                        </Label>
-                                                    </children>
-                                                </StackPane>
                                                 <StackPane layoutY="63.0" prefHeight="41.0" prefWidth="254.0">
                                                     <children>
                                                         <Label alignment="CENTER" prefHeight="47.0" prefWidth="103.0" text="Username" textFill="#ff9800">
@@ -116,7 +100,7 @@
                                                         </Label>
                                                     </children>
                                                 </StackPane>
-                                                <StackPane layoutY="122.0" prefHeight="41.0" prefWidth="256.0">
+                                                <StackPane layoutY="114.0" prefHeight="49.0" prefWidth="256.0">
                                                     <children>
                                                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="103.0" text="First name" textFill="#ff9800">
                                                             <font>
@@ -125,7 +109,7 @@
                                                         </Label>
                                                     </children>
                                                 </StackPane>
-                                                <StackPane layoutY="177.0" prefHeight="52.0" prefWidth="254.0">
+                                                <StackPane layoutY="164.0" prefHeight="55.0" prefWidth="254.0">
                                                     <children>
                                                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="103.0" text="Last name" textFill="#ff9800">
                                                             <font>
@@ -134,7 +118,7 @@
                                                         </Label>
                                                     </children>
                                                 </StackPane>
-                                                <StackPane layoutY="240.0" prefHeight="49.0" prefWidth="256.0">
+                                                <StackPane layoutY="222.0" prefHeight="54.0" prefWidth="256.0">
                                                     <children>
                                                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="103.0" text="password" textFill="#ff9800">
                                                             <font>
@@ -143,7 +127,16 @@
                                                         </Label>
                                                     </children>
                                                 </StackPane>
-                                                <StackPane layoutY="298.0" prefHeight="50.0" prefWidth="257.0">
+                                                <StackPane layoutY="280.0" prefHeight="61.0" prefWidth="263.0">
+                                                    <children>
+                                                        <Label text="Email" textFill="#ff9800">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </StackPane>
+                                                <StackPane layoutY="340.0" prefHeight="52.0" prefWidth="257.0">
                                                     <children>
                                                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="103.0" text="level" textFill="#ff9800">
                                                             <font>
@@ -152,7 +145,7 @@
                                                         </Label>
                                                     </children>
                                                 </StackPane>
-                                                <StackPane layoutY="355.0" prefHeight="49.0" prefWidth="255.0">
+                                                <StackPane layoutY="400.0" prefHeight="38.0" prefWidth="255.0">
                                                     <children>
                                                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="103.0" text="Birth date" textFill="#ff9800">
                                                             <font>
@@ -168,13 +161,13 @@
                                         <Insets top="20.0" />
                                     </padding>
                                 </VBox>
-                                <VBox layoutX="392.0" layoutY="34.0" prefHeight="411.0" prefWidth="329.0" spacing="20.0" AnchorPane.leftAnchor="392.0" AnchorPane.rightAnchor="309.0">
+                                <VBox layoutX="392.0" layoutY="81.0" prefHeight="394.0" prefWidth="329.0" spacing="20.0" AnchorPane.leftAnchor="392.0" AnchorPane.rightAnchor="309.0">
                                     <children>
-                                        <TextField prefHeight="45.0" prefWidth="362.0" promptText="ID" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
-                                        <TextField layoutX="10.0" layoutY="30.0" prefHeight="45.0" prefWidth="362.0" promptText="UserName" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
-                                        <TextField layoutX="10.0" layoutY="95.0" prefHeight="45.0" prefWidth="362.0" promptText="FirstName" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
-                                        <TextField layoutX="10.0" layoutY="160.0" prefHeight="45.0" prefWidth="362.0" promptText="LastName" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
-                                        <TextField layoutX="10.0" layoutY="225.0" prefHeight="45.0" prefWidth="362.0" promptText="Password" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                        <TextField fx:id="userName" layoutX="10.0" layoutY="30.0" prefHeight="45.0" prefWidth="362.0" promptText="UserName" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                        <TextField fx:id="firstName" layoutX="10.0" layoutY="95.0" prefHeight="45.0" prefWidth="362.0" promptText="FirstName" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                        <TextField fx:id="lastName" layoutX="10.0" layoutY="160.0" prefHeight="45.0" prefWidth="362.0" promptText="LastName" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                        <TextField fx:id="password" layoutX="10.0" layoutY="225.0" prefHeight="45.0" prefWidth="362.0" promptText="Password" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                        <TextField fx:id="email" prefHeight="50.0" prefWidth="329.0" promptText="Email" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
                                         <HBox prefHeight="51.0" prefWidth="341.0">
                                             <children>
                                                 <StackPane prefHeight="45.0" prefWidth="329.0">
@@ -184,7 +177,7 @@
                                                 </StackPane>
                                             </children>
                                         </HBox>
-                                        <DatePicker prefHeight="38.0" prefWidth="329.0" style="-fx-background-radius: 10;" />
+                                        <DatePicker fx:id="datePicker" prefHeight="38.0" prefWidth="329.0" style="-fx-background-radius: 10;" />
                                     </children>
                                     <padding>
                                         <Insets top="20.0" />
@@ -192,15 +185,16 @@
                                 </VBox>
                                 <VBox layoutX="783.0" layoutY="23.0" prefHeight="419.0" prefWidth="298.0" AnchorPane.rightAnchor="0.0">
                                     <children>
-                                        <StackPane prefHeight="419.0" prefWidth="229.0">
+                                        <StackPane prefHeight="288.0" prefWidth="298.0">
                                             <children>
-                                                <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="230.0" style="-fx-background-color: #ff9800; -fx-background-radius: 90;" text="Add New student" textFill="#212121">
+                                                <Button mnemonicParsing="false" onAction="#addNewStudent" prefHeight="62.0" prefWidth="230.0" style="-fx-background-color: #ff9800; -fx-background-radius: 90;" text="Add New student" textFill="#212121">
                                                     <font>
                                                         <Font name="System Bold" size="18.0" />
                                                     </font>
                                                 </Button>
                                             </children>
                                         </StackPane>
+                                        <Label fx:id="invalid" prefHeight="44.0" prefWidth="159.0" textFill="#e80505" />
                                     </children>
                                 </VBox>
                             </children>

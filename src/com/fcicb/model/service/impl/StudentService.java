@@ -4,6 +4,7 @@ import com.fcicb.domain.Student;
 import com.fcicb.model.dao.impl.StudentDao;
 import com.fcicb.model.service.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 public class StudentService implements Service<Student> {
@@ -37,11 +38,14 @@ public class StudentService implements Service<Student> {
         if (item == null)
             return false;
         else
-            return studentDao.deactivate(item);
+            return studentDao.reactivate(item);
     }
 
 
+    public  boolean updatePassword(Principal userName , String newpassword){
 
+        return studentDao.updatePassword(userName,newpassword);
+    }
     @Override
     public boolean add(List<Student> items) {
         return false;
@@ -52,11 +56,24 @@ public class StudentService implements Service<Student> {
         return null;
     }
 
+    // activation
     @Override
     public List<Student> getAll() {
-        return null;
+
+        return studentDao.getAll();
+
     }
 
+    public boolean ActiveOrNot(Principal userName)
+    {
+        return studentDao.ActiveOrNot(userName);
+    }
+
+    public List<Student> getAllStudents() {
+
+        return studentDao.getAllStudents();
+
+    }
     @Override
     public boolean update(Student item) {
         return false;
