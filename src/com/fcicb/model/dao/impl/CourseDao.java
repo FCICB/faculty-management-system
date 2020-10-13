@@ -12,6 +12,7 @@ public class CourseDao implements Dao<Course> {
 
     ResultSet rst = null;
     @Override
+
     public boolean add(Course item){
         int result ;
         Connection connection =null;
