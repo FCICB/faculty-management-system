@@ -6,7 +6,6 @@ import javax.mail.PasswordAuthentication;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 import javax.mail.Session;
@@ -61,8 +60,8 @@ public class JavaMailUtil {
             message.setSubject("Email Configuration");
 
             String content = new String (Files.readAllBytes(Paths.get("src\\com\\fcicb\\utilities\\EmailMessage.html").toAbsolutePath()));
+            content+=defaultPassword;
             message.setContent(content,"text/html");
-            message.setText("Default Password is "+defaultPassword);
 
             return message;
         }
