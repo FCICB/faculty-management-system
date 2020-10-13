@@ -1,5 +1,7 @@
 package com.fcicb.view.main;
 
+import com.fcicb.domain.Course;
+import com.fcicb.model.dao.impl.CourseDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
