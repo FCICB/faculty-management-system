@@ -20,7 +20,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddNewCourse implements Initializable ,admin{
-     private final AdminDashBoard admin =new AdminDashBoard();
+
+    private final AdminDashBoard admin =new AdminDashBoard();
     @FXML private javafx.scene.control.ComboBox comboxHours;
     @FXML private javafx.scene.control.ComboBox comboxlevels;
     @FXML private TextField courseCode,courseName ,addedBy ;
@@ -77,7 +78,7 @@ public class AddNewCourse implements Initializable ,admin{
     }
 
     public void addNewCourses(ActionEvent actionEvent) {
-         String courseCodeValue, courseNameValue , addedByValue  , comboxHoursValue , comboxlevelsValue , descriptionValue;
+        String courseCodeValue, courseNameValue , addedByValue  , comboxHoursValue , comboxlevelsValue , descriptionValue;
 
         courseCodeValue =  courseCode.getText();
         courseNameValue =  courseName.getText();
@@ -95,9 +96,9 @@ public class AddNewCourse implements Initializable ,admin{
             invalidinput.setText("");
         }
         else
-            {
-                invalidinput.setText("Invalid input");
-            }
+        {
+            invalidinput.setText("Invalid input");
+        }
         courseCode.setText("");
         courseName.setText("");
         addedBy.setText("");
