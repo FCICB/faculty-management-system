@@ -64,4 +64,21 @@ public class StudentCourseService implements Service<StudentCourse> {
         return false;
     }
 
+    public boolean registerCourses(List<Integer> coursesID, int studentID){
+
+        int totalHours;
+        totalHours = studentCourseDao.calculateRegisteredHours(coursesID);
+        if(totalHours<=20){
+            for (int id: coursesID){
+                studentCourseDao.registerCourse(id,studentID);
+            }
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+
 }
