@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1066.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fcicb.view.sample.admin.Reactivate">
+    <children>
+        <BorderPane prefHeight="854.0" prefWidth="1194.0" style="-fx-background-color: #212121;">
+            <top>
+                <HBox prefHeight="37.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #e3dfde;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#dashBoard" onMouseDragEntered="#dashBoard" prefHeight="35.0" prefWidth="184.0" style="-fx-background-color: #d7d4d4; -fx-background-radius: 80;" text="Dashboard" textFill="#212121">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#addNewCourse" prefHeight="35.0" prefWidth="150.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Add New Course" textFill="#ff9800" />
+                        <Button mnemonicParsing="false" onAction="#deactivateStudent" prefHeight="35.0" prefWidth="165.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Deactivate Student " textFill="#ff9800" />
+                        <Button mnemonicParsing="false" onAction="#addGrades" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Add grades" textFill="#ff9800" />
+                        <Button layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#showALLStudents" prefHeight="35.0" prefWidth="197.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Show ALL Students" textFill="#ff9800" />
+                    </children>
+                </HBox>
+            </top>
+            <left>
+                <VBox prefHeight="840.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+            </left>
+            <right>
+                <VBox prefHeight="574.0" prefWidth="56.0" BorderPane.alignment="CENTER" />
+            </right>
+            <bottom>
+                <HBox prefHeight="20.0" prefWidth="1146.0" BorderPane.alignment="CENTER" />
+            </bottom>
+            <center>
+                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <StackPane prefHeight="817.0" prefWidth="608.0">
+                                    <children>
+                                        <TableView fx:id="tableview" prefHeight="817.0" prefWidth="536.0">
+                                            <columns>
+                                                <TableColumn fx:id="IDs" prefWidth="222.0" text="ID" />
+                                                <TableColumn fx:id="userName" prefWidth="222.0" text="userName" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </StackPane>
+                                <Button layoutX="630.0" layoutY="381.0" mnemonicParsing="false" onAction="#reactivate" prefHeight="56.0" prefWidth="164.0" style="-fx-background-radius: 90; -fx-background-color: #ff9800;" text="Button" textFill="#f2f2f2">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>

@@ -1,41 +1,38 @@
 package com.fcicb.model.dao.impl;
-
-
 import com.fcicb.domain.Student;
 import com.fcicb.jdbc.DatabaseConnection;
 import com.fcicb.model.dao.Dao;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.security.Principal;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDao implements Dao<Student> {
 
     DatabaseConnection instance = DatabaseConnection.getInstance();
 
+
     @Override
-    public boolean add(Student item){
+    public boolean add(Student item)
+    {
 
         int result ;
 
         try {
             Connection connection = instance.getConnection();
-            PreparedStatement insert = connection.prepareStatement("INSERT INTO student  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-                insert.setInt(1, item.getId());
-                insert.setString(2, item.getUsername());
-                insert.setFloat(3, item.getGpa());
-                insert.setDate(4, (Date) item.getBirthDate());
-                insert.setString(5, String.valueOf(item.getStudentState()));
-                insert.setInt(6, item.getLevel());
-                insert.setInt(7, item.getCompletedHours());
-                insert.setString(8, item.getFname());
-                insert.setString(9, item.getLname());
-                insert.setString(10, item.getEmail());
-                insert.setInt(11, item.getDeletedBy());
-
+            PreparedStatement insert = connection.prepareStatement("INSERT INTO student (username,GPA,birth_date,account_activated,level,completed_hours,fname,lname,email,password ,added_by)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+            insert.setString(1, item.getUsername());
+            insert.setFloat(2, item.getGpa());
+            insert.setDate(3, (Date) item.getBirthDate());
+            insert.setString(4, String.valueOf(item.getStudentState()));
+            insert.setInt(5, item.getLevel());
+            insert.setInt(6, item.getCompletedHours());
+            insert.setString(7, item.getFname());
+            insert.setString(8, item.getLname());
+            insert.setString(9, item.getEmail());
+            insert.setString(10, item.getPassword());
+            insert.setInt(11, item.getAddedBy());
 
             result=insert.executeUpdate();
 
@@ -53,7 +50,8 @@ public class StudentDao implements Dao<Student> {
 
 
     @Override
-    public boolean delete(Student student) {
+    public boolean delete(Student student)
+    {
 
         int result ;
 
@@ -73,12 +71,13 @@ public class StudentDao implements Dao<Student> {
         return false;
     }
 
-    public boolean deactivate(Student student){
+    public boolean deactivate(Student student)
+    {
         int result;
 
         try  {
             Connection connection = instance.getConnection();
-            PreparedStatement deactivate = connection.prepareStatement("UPDATE  student  account_activated = 'Deactivated' WHERE id = ? ");
+            PreparedStatement deactivate = connection.prepareStatement("UPDATE  student SET account_activated = 'Deactivated' WHERE id = ? ");
             deactivate.setInt(1, student.getId());
 
             result = deactivate.executeUpdate();
@@ -92,12 +91,13 @@ public class StudentDao implements Dao<Student> {
         return false;
     }
 
-    public boolean reactivate(Student student){
+    public boolean reactivate(Student student)
+    {
         int result;
 
         try  {
             Connection connection = instance.getConnection();
-            PreparedStatement reactivated = connection.prepareStatement("UPDATE  student  account_activated = 'Activated' WHERE id = ? ");
+            PreparedStatement reactivated = connection.prepareStatement("UPDATE  student SET account_activated = 'Activated' WHERE id = ? ");
             reactivated.setInt(1, student.getId());
 
             result = reactivated.executeUpdate();
@@ -112,29 +112,6 @@ public class StudentDao implements Dao<Student> {
     }
 
 
-    public float calculateGPA(Student student){
-
-        float totalGradePoints = 0;
-
-        try  {
-            Connection connection = instance.getConnection();
-            PreparedStatement conn = connection.prepareStatement
-                                                (" SELECT SUM(grade) AS 'totalGrades'" +
-                                                        " FROM studentCourse " +
-                                                        " WHERE id = ? ");
-            conn.setInt(1, student.getId());
-
-            totalGradePoints = conn.executeUpdate();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return totalGradePoints / student.getCompletedHours() ;
-    }
-
-
     @Override
     public boolean add(List<Student> items) {
         return false;
@@ -145,13 +122,120 @@ public class StudentDao implements Dao<Student> {
         return null;
     }
 
+    // activation
     @Override
     public List<Student> getAll() {
-        return null;
+        List<Student> students =  new ArrayList<>();
+        PreparedStatement list =null ;
+        ResultSet rst = null;
+        try
+        {
+            Connection connection = instance.getConnection();
+            list = connection.prepareStatement("SELECT id,username,fname,lname,email,password  FROM student where account_activated = 'Deactivated'");
+            rst = list.executeQuery();
+
+            while(rst.next())
+            {
+                students.add(new Student(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6)));
+
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return students;
+
+    }
+    public List<Student> deactivateToLogin() {
+        List<Student> students =  new ArrayList<>();
+        PreparedStatement list =null ;
+        ResultSet rst = null;
+        try
+        {
+            Connection connection = instance.getConnection();
+            list = connection.prepareStatement("SELECT id,username,fname,lname,email,password  FROM student where account_activated = 'Activated'");
+            rst = list.executeQuery();
+
+            while(rst.next())
+            {
+                students.add(new Student(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6)));
+
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return students;
+
     }
 
+    public boolean ActiveOrNot(Principal userName){
+        List<Student> students=   deactivateToLogin();
+        for (Student student : students)
+        {
+
+            if(student.getUsername().equals(userName.toString()) ==true)
+            {
+
+                return true;
+            }
+        }
+        return false;
+    }
+    public List<Student> getAllStudents() {
+        List<Student> students =  new ArrayList<>();
+        PreparedStatement list =null ;
+        ResultSet rst = null;
+        try
+        {
+            Connection connection = instance.getConnection();
+            list = connection.prepareStatement("SELECT id,username,fname,lname,email,password  FROM student");
+            rst = list.executeQuery();
+
+            while(rst.next())
+            {
+                students.add(new Student(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6)));
+
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return students;
+
+    }
     @Override
     public boolean update(Student item) {
         return false;
     }
+
+    public  boolean updatePassword(Principal userName , String newpassword){
+        int result;
+
+        try  {
+            Connection connection = instance.getConnection();
+            PreparedStatement reactivated = connection.prepareStatement("UPDATE  student SET password = ? WHERE username = ? ");
+            reactivated.setString(1, newpassword);
+            reactivated.setString(2, userName.toString());
+
+            result = reactivated.executeUpdate();
+
+            if ( result != 0 )
+                return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }
+
+

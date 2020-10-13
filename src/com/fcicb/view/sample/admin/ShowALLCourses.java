@@ -42,29 +42,29 @@ public class ShowALLCourses implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-          CourseService courseService = new CourseService();
-          ObservableList<Course>allCourses =  FXCollections.observableArrayList( courseService.getAll());
+        CourseService courseService = new CourseService();
+        ObservableList<Course>allCourses =  FXCollections.observableArrayList( courseService.getAll());
 
-          code.setCellValueFactory(new PropertyValueFactory<Course, String>("code"));
-          name.setCellValueFactory(new PropertyValueFactory<Course, String>("name"));
-          hours.setCellValueFactory(new PropertyValueFactory<Course, Integer>("hours"));
-          level.setCellValueFactory(new PropertyValueFactory<Course, Integer>("level"));
-          description.setCellValueFactory(new PropertyValueFactory<Course, String>("description"));
+        code.setCellValueFactory(new PropertyValueFactory<Course, String>("code"));
+        name.setCellValueFactory(new PropertyValueFactory<Course, String>("name"));
+        hours.setCellValueFactory(new PropertyValueFactory<Course, Integer>("hours"));
+        level.setCellValueFactory(new PropertyValueFactory<Course, Integer>("level"));
+        description.setCellValueFactory(new PropertyValueFactory<Course, String>("description"));
         added.setCellValueFactory(new PropertyValueFactory<Course, Integer>("added"));
-          tableview.setItems(allCourses);
+        tableview.setItems(allCourses);
 
 
     }
 
     public void Back(ActionEvent actionEvent) throws IOException {
 
-            Parent tableview = FXMLLoader.load(getClass().getResource("addNewCourse.fxml"));
-            Scene tablescene = new Scene(tableview);
-            Stage windows = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-            windows.setResizable(true);
-            windows.setScene(tablescene);
+        Parent tableview = FXMLLoader.load(getClass().getResource("addNewCourse.fxml"));
+        Scene tablescene = new Scene(tableview);
+        Stage windows = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        windows.setResizable(true);
+        windows.setScene(tablescene);
 
-            windows.show();
+        windows.show();
 
 
     }
