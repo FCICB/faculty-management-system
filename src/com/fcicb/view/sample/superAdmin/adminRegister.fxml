@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="733.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fcicb.view.sample.superAdmin.AdminRegister">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="921.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fcicb.view.sample.superAdmin.AdminRegister">
     <children>
-        <VBox layoutX="41.0" layoutY="79.0" prefHeight="258.0" prefWidth="187.0" spacing="10.0">
+        <VBox layoutX="41.0" layoutY="79.0" prefHeight="258.0" prefWidth="124.0" spacing="10.0">
             <children>
                 <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="66.0" prefWidth="184.0" text="First  Name" textFill="#ff9800">
                     <font>
@@ -39,13 +39,13 @@
                 <Insets top="10.0" />
             </padding>
         </VBox>
-        <VBox layoutX="228.0" layoutY="89.0" prefHeight="258.0" prefWidth="394.0" spacing="10.0">
+        <VBox layoutX="159.0" layoutY="91.0" prefHeight="258.0" prefWidth="339.0" spacing="10.0">
             <children>
-                <TextField fx:id="firstName" layoutX="10.0" layoutY="10.0" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
-                <TextField fx:id="lastName" layoutX="10.0" layoutY="51.0" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
-                <TextField fx:id="userName" layoutX="10.0" layoutY="92.0" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
-                <PasswordField fx:id="password" prefHeight="39.0" prefWidth="394.0" style="-fx-background-radius: 50;" />
-                <TextField fx:id="email" layoutX="10.0" layoutY="174.0" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
+                <TextField fx:id="firstName" layoutX="10.0" layoutY="10.0" onMouseClicked="#textFieldIsNullfirst" onMouseExited="#nameValidation" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
+                <TextField fx:id="lastName" layoutX="10.0" layoutY="51.0" onMouseClicked="#textFieldIsNulllast" onMouseExited="#nameValidation" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
+                <TextField fx:id="userName" layoutX="10.0" layoutY="92.0" onMouseClicked="#textFieldIsNulluser" onMouseExited="#userValidation" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
+                <PasswordField fx:id="password" onMouseClicked="#textFieldIsNullpassword" onMouseExited="#passwordValidation" prefHeight="39.0" prefWidth="394.0" style="-fx-background-radius: 50;" />
+                <TextField fx:id="email" layoutX="10.0" layoutY="174.0" onMouseClicked="#textFieldIsNullemail" onMouseExited="#emailValidation" prefHeight="41.0" prefWidth="277.0" style="-fx-background-radius: 50;" />
             </children>
         </VBox>
         <Button layoutX="255.0" layoutY="418.0" mnemonicParsing="false" onAction="#Register" prefHeight="55.0" prefWidth="223.0" style="-fx-background-radius: 80; -fx-background-color: #ff9800;" text="Register" textFill="#f8f8f8" />
@@ -54,5 +54,34 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
+      <VBox layoutX="503.0" layoutY="91.0" prefHeight="244.0" prefWidth="399.0">
+         <children>
+            <Label fx:id="firstvalidation" prefHeight="43.0" prefWidth="400.0" textFill="#d70808">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastvalidation" prefHeight="54.0" prefWidth="413.0" textFill="#d70e0e">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="uservalidation" prefHeight="54.0" prefWidth="402.0" textFill="#d31010">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordvalidation" prefHeight="52.0" prefWidth="408.0" textFill="#d01111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailvalidation" prefHeight="35.0" prefWidth="431.0" textFill="#da1111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
