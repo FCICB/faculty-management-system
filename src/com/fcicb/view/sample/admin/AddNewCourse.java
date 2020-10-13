@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddNewCourse implements Initializable ,admin{
+
     private final AdminDashBoard admin =new AdminDashBoard();
     @FXML private javafx.scene.control.ComboBox comboxHours;
     @FXML private javafx.scene.control.ComboBox comboxlevels;
