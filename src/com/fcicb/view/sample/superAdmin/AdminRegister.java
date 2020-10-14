@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class AdminRegister implements Initializable {
     boolean first =false, last=false , user=false ,pass=false , emailboolean=false;
+
     @FXML TextField  firstName, lastName, userName, email;
     @FXML PasswordField password;
     @FXML Label firstvalidation , lastvalidation ,uservalidation ,passwordvalidation ,emailvalidation ;
@@ -28,7 +29,7 @@ public class AdminRegister implements Initializable {
 
     public void Register(ActionEvent actionEvent) {
 
-     if(first && last && user && pass && emailboolean){
+     if(first && last && user && pass && emailboolean ){
 
         String  firstNameValue, lastNameValue, userNameValue, emailValue, passwordValue;
         firstNameValue = firstName.getText();
@@ -77,23 +78,27 @@ public class AdminRegister implements Initializable {
         }
 
 
-    public void nameValidation(MouseEvent mouseEvent) {
-        addAdminValidation.nameValidation(firstName,firstvalidation,"please only " +
+    public void fnameValidation(MouseEvent mouseEvent) {
+        addAdminValidation.firstNameValidation(firstName,firstvalidation,"please only " +
+                "enters letters from a-z / A-Z");
+    }
+    public void lnameValidation(MouseEvent mouseEvent) {
+        addAdminValidation.secondNameValidation(lastName,lastvalidation,"please only " +
                 "enters letters from a-z / A-Z");
     }
 
     public void userValidation(MouseEvent mouseEvent) {
-        addAdminValidation.userValidation(userName, uservalidation, "please only " +
+       addAdminValidation.userValidation(userName, uservalidation, "please only " +
                 "enters letters from a-z / A-Z with out spaces");
     }
 
     public void passwordValidation(MouseEvent mouseEvent) {
-        addAdminValidation.passwordValidation(password, passwordvalidation, "your password (from 8 to 20 character) must contain at" +
+      addAdminValidation.passwordValidation(password, passwordvalidation, "your password (from 8 to 20 character) must contain at" +
                 " least one lower case , one upper case" +
                 ", one digit , one special character and no spaces");
     }
 
     public void emailValidation(MouseEvent mouseEvent) {
-        addAdminValidation.emailValidation(email, emailvalidation, "Format must be name@emailaddress.com");
+       addAdminValidation.emailValidation(email, emailvalidation, "Format must be name@emailaddress.com");
     }
 }

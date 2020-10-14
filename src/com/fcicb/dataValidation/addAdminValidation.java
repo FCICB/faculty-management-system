@@ -15,7 +15,7 @@ public class addAdminValidation {
         return isNull;
     }
 
-        public static boolean nameValidation(TextField inputTextField, Label inputLabel, String validationText) {
+        public static boolean firstNameValidation(TextField inputTextField, Label inputLabel, String validationText) {
             boolean isAlphabet = true;
             String validationString = null;
 
@@ -30,6 +30,21 @@ public class addAdminValidation {
             return isAlphabet;
 
         }
+    public static boolean secondNameValidation(TextField inputTextField, Label inputLabel, String validationText) {
+        boolean isAlphabet = true;
+        String validationString = null;
+
+        if (!inputTextField.getText().matches("[a-z A-Z]+")) {
+            isAlphabet = false;
+            validationString = validationText;
+
+        }
+        inputLabel.setText(validationString);
+
+        System.out.println(inputTextField.getText().matches("[a-z A-Z]"));
+        return isAlphabet;
+
+    }
 
     public static boolean userValidation(TextField inputTextField, Label inputLabel, String validationText) {
         boolean isAlphabetWithoutSpace = true;
