@@ -8,11 +8,38 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentCourseDao implements Dao<StudentCourse> {
 
     DatabaseConnection instance = DatabaseConnection.getInstance();
+    public List<StudentCourse> reviewPassCourses(int id)
+    {
+        ResultSet rst = null;
+        List<StudentCourse> list = new ArrayList<>();
+        Connection connection =null;
+        PreparedStatement getCourses =null;
+        try {
+            connection = instance.getConnection();
+            getCourses= connection.prepareStatement("SELECT code, name, grade FROM studentCourse inner join course on\n" +
+                    "studentCourse.courseId = course.id\n" +
+                    "inner JOIN student on\n" +
+                    "studentCourse.studentId = student.id\n" +
+                    "where grade >=50 and studentId = ?;");
+            getCourses.setInt(1,id);
+            rst = getCourses.executeQuery();
+            while (rst.next())
+            {
+                list.add(new StudentCourse(rst.getString(1),rst.getString(2),rst.getInt(3)));
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     @Override
     public boolean add(StudentCourse studentInfo) {

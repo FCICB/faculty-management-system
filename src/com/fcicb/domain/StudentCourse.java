@@ -6,6 +6,13 @@ public class StudentCourse {
     private Student student;
     private Course course;
 
+
+    public StudentCourse(String code ,String name, float grade)
+    {
+        course = new Course(code,name);
+        this.grade = grade;
+    }
+
     public float getGrade() {
         return grade;
     }

@@ -11,6 +11,9 @@ import java.util.List;
 
 public class StudentCourseService implements Service<StudentCourse> {
     StudentCourseDao studentCourseDao = new StudentCourseDao();
+    public List<StudentCourse> reviewPassCourses(int id) {
+        return studentCourseDao.reviewPassCourses(id);
+    }
 
     @Override
     public boolean add(StudentCourse studentInfo) {
