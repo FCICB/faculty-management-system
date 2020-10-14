@@ -3,6 +3,7 @@ package com.fcicb.domain;
 
 public class Course {
 
+    private int id;
     private String code;
     private String name;
     private int hours;
@@ -24,7 +25,24 @@ public class Course {
         this.addedBy = addedBy;
     }
 
+    public Course( int id, String code, String name, int hours, int level, String description,int addedBy) {
 
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.hours = hours;
+        this.level = level;
+        this.description = description;
+        this.addedBy = addedBy;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCode() {
         return code;

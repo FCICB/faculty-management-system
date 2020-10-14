@@ -2,15 +2,15 @@ package com.fcicb.domain;
 
 public class StudentCourse {
     private int id;
-    private int grade;
+    private float grade;
     private Student student;
     private Course course;
 
-    public int getGrade() {
+    public float getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(float grade) {
         this.grade = grade;
     }
 
@@ -26,8 +26,9 @@ public class StudentCourse {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public int setStudent(Student student) {
         this.student = student;
+        return 0;
     }
 
     public Course getCourse() {
