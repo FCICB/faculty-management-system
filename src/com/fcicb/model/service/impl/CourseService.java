@@ -21,7 +21,7 @@ public class CourseService implements Service<Course> {
     }
 
     @Override
-    
+
     public boolean add(List<Course> items) {
         return false;
     }
