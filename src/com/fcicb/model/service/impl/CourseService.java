@@ -21,6 +21,7 @@ public class CourseService implements Service<Course> {
     }
 
     @Override
+
     public boolean add(List<Course> items) {
         return false;
     }
@@ -39,7 +40,12 @@ public class CourseService implements Service<Course> {
 
     @Override
     public boolean update(Course item) {
-        return false;
+        if (item == null) {
+            return false;
+        } else {
+
+            return courseDao.update(item);
+        }
     }
 
     @Override

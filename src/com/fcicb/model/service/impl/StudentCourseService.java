@@ -11,6 +11,9 @@ import java.util.List;
 
 public class StudentCourseService implements Service<StudentCourse> {
     StudentCourseDao studentCourseDao = new StudentCourseDao();
+    public List<StudentCourse> reviewPassCourses(int id) {
+        return studentCourseDao.reviewPassCourses(id);
+    }
 
     @Override
     public boolean add(StudentCourse studentInfo) {
@@ -37,15 +40,12 @@ public class StudentCourseService implements Service<StudentCourse> {
             return studentCourseDao.update(studentInfo);
     }
 
-    public boolean checkGrade(StudentCourse studentInfo) throws SQLException {
-        if (studentInfo == null)
-            return false;
-        else
-            return studentCourseDao.checkGrade(studentInfo);
+    public int checkGrade(StudentCourse studentInfo) throws SQLException {
+        return studentCourseDao.checkGrade(studentInfo);
     }
 
-    public int retrieve(StudentCourse studentInfo) throws SQLException {
-       return studentCourseDao.retrieve(studentInfo);
+    public int getHour(StudentCourse studentInfo) throws SQLException {
+       return studentCourseDao.getHour(studentInfo);
     }
 
     @Override
@@ -63,22 +63,5 @@ public class StudentCourseService implements Service<StudentCourse> {
     public boolean delete(StudentCourse item) {
         return false;
     }
-
-    public boolean registerCourses(List<Integer> coursesID, int studentID){
-
-        int totalHours;
-        totalHours = studentCourseDao.calculateRegisteredHours(coursesID);
-        if(totalHours<=20){
-            for (int id: coursesID){
-                studentCourseDao.registerCourse(id,studentID);
-            }
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-
 
 }
