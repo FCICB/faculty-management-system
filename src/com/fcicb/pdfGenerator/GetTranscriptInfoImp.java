@@ -34,11 +34,11 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     @Override
     public void queryStudentInfo(int id) {
-        String sqlQuery1 =  " SELECT fname, lname, GPA, level, completed_hours FROM student;" +
+        String sqlQuery2 =  " SELECT fname, lname, GPA, level, completed_hours FROM student;" +
                 " WHERE id = ? ";
         student = new Student();
 
-        try (PreparedStatement pStmt1 = connection.prepareStatement(sqlQuery1)) {
+        try (PreparedStatement pStmt1 = connection.prepareStatement(sqlQuery2)) {
             pStmt1.setInt(1, id);
             rs = pStmt1.executeQuery();
             student.setFname(rs.getString(1));
@@ -53,7 +53,7 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     @Override
     public void queryCourseInfo(int id) {
-        String sqlQuery2 = "  SELECT studentCourse.courseId, grade,(SELECT name FROM course as name  WHERE studentCourse.courseId = id ),\n" +
+        String sqlQuery3 = "  SELECT studentCourse.courseId, grade,(SELECT name FROM course as name  WHERE studentCourse.courseId = id ),\n" +
                            "  (SELECT code FROM course as code\n" +
                            "  WHERE studentCourse.courseId = id)\n" +
                            "  FROM studentCourse, student\n" +
@@ -61,7 +61,7 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
         courses = new ArrayList<>();
 
-        try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery2)) {
+        try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery3)) {
             pStmt2.setInt(1, id);
             rs = pStmt2.executeQuery();
 
