@@ -6,11 +6,30 @@ public class StudentCourse {
     private Student student;
     private Course course;
 
+    public StudentCourse(){
+
+    }
 
     public StudentCourse(String code ,String name, float grade)
     {
         course = new Course(code,name);
         this.grade = grade;
+    }
+
+    public void setCourseName(String name){
+        course.setName(name);
+    }
+
+    public String getCourseName(){
+        return course.getName();
+    }
+
+    public void setCourseCode(String code){
+        course.setCode(code);
+    }
+
+    public String getCourseCode(){
+        return course.getCode();
     }
 
     public float getGrade() {

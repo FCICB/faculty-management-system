@@ -10,7 +10,6 @@ public class Student {
     private float gpa;
     private Date birthDate;
 
-
     public enum  studentState { ACTIVATED, DEACTIVATED };
     private studentState state;
     private int level;

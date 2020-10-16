@@ -1,6 +1,7 @@
 package com.fcicb.pdfGenerator;
 
 import com.fcicb.domain.Student;
+import com.fcicb.domain.StudentCourse;
 import com.fcicb.jdbc.DatabaseConnection;
 
 import java.sql.*;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     private Student student;
-    private ArrayList<Course> courses;
+    private ArrayList<StudentCourse> courses;
     private DatabaseConnection instance = DatabaseConnection.getInstance();
     private Connection connection;
     private ResultSet rs;
@@ -59,11 +60,11 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
             pStmt2.setInt(1, id);
             rs = pStmt2.executeQuery();
             while (rs.next()) {
-                Course course = new Course();
-                //course.setGrade(rs.getFloat(2));
-                course.setName(rs.getString(3));
-                course.setHours(rs.getInt(4));
-                courses.add(course);
+                StudentCourse sc = new StudentCourse();
+                sc.setGrade(rs.getFloat(2));
+                sc.setCourseName(String.valueOf(rs.getFloat(3)));
+                sc.setCourseCode(String.valueOf(rs.getFloat(4)));
+                courses.add(sc);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,12 +83,12 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
     }
 
     @Override
-    public ArrayList<Course> getCourses() {
+    public ArrayList<StudentCourse> getCourses() {
         return this.courses;
     }
 
     @Override
-    public void setCourses(ArrayList<Course> courses) {
+    public void setCourses(ArrayList<StudentCourse> courses) {
         this.courses = courses;
     }
 }

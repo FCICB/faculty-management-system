@@ -2,6 +2,7 @@ package com.fcicb.pdfGenerator;
 
 import com.fcicb.domain.Course;
 import com.fcicb.domain.Student;
+import com.fcicb.domain.StudentCourse;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
@@ -64,17 +65,18 @@ public class TranscriptGenerator {
             table.setHeaderRows(1);
 
             getTranscriptInfoImpl.queryCourseInfo(studentId);
-            ArrayList<Course> courses = getTranscriptInfoImpl.getCourses();
+            ArrayList<StudentCourse> courses = getTranscriptInfoImpl.getCourses();
 
-            for (Course course : courses) {
-                PdfPCell courseName = new PdfPCell(new Phrase(course.getName()));
-                PdfPCell courseHours = new PdfPCell(new Phrase(String.valueOf(course.getHours())));
-                //PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(course.getGrades())));
+            for (StudentCourse course : courses) {
+                PdfPCell courseName = new PdfPCell(new Phrase(course.getCourseName()));
+                PdfPCell courseHours = new PdfPCell(new Phrase(String.valueOf(course.getCourseCode())));
+                PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(course.getGrade())));
 
                 table.addCell(courseName);
                 table.addCell(courseHours);
-                //table.addCell(String.valueOf(course.getGrades()));
+                table.addCell(courseGrades);
             }
+
             ColumnText column = new ColumnText(stamper.getOverContent(1));
             column.setSimpleColumn(36, 36, 559, 540);
             column.addElement(table);

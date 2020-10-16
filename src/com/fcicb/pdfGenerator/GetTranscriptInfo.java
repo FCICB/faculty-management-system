@@ -2,6 +2,7 @@ package com.fcicb.pdfGenerator;
 
 import com.fcicb.domain.Course;
 import com.fcicb.domain.Student;
+import com.fcicb.domain.StudentCourse;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,8 @@ public interface GetTranscriptInfo {
 
     public void setStudent(Student student);
 
-    public ArrayList<Course> getCourses();
+    public ArrayList<StudentCourse> getCourses();
 
-    public void setCourses(ArrayList<Course> courses);
+    public void setCourses(ArrayList<StudentCourse> courses);
 
 }

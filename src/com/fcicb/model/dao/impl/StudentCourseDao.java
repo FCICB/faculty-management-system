@@ -14,12 +14,14 @@ import java.util.List;
 public class StudentCourseDao implements Dao<StudentCourse> {
 
     DatabaseConnection instance = DatabaseConnection.getInstance();
+
     public List<StudentCourse> reviewPassCourses(int id)
     {
         ResultSet rst;
         List<StudentCourse> list = new ArrayList<>();
         Connection connection;
         PreparedStatement getCourses;
+
         try {
             connection = instance.getConnection();
             getCourses= connection.prepareStatement("SELECT code, name, grade FROM studentCourse inner join course on\n" +
@@ -29,6 +31,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
                     "where grade >=50 and studentId = ?;");
             getCourses.setInt(1,id);
             rst = getCourses.executeQuery();
+
             while (rst.next())
             {
                 list.add(new StudentCourse(rst.getString(1),rst.getString(2),rst.getInt(3)));
