@@ -1,14 +1,10 @@
 package com.fcicb.model.service.impl;
 
-import com.fcicb.domain.Course;
-import com.fcicb.domain.Student;
 import com.fcicb.domain.StudentCourse;
 import com.fcicb.model.dao.impl.StudentCourseDao;
 import com.fcicb.model.service.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,5 +82,6 @@ public class StudentCourseService implements Service<StudentCourse> {
     public ArrayList<String> showAvailableCourses(int level){
         return studentCourseDao.showAvailableCourses(level);
     }
+
 
 }

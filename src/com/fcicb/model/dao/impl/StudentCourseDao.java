@@ -179,7 +179,6 @@ public class StudentCourseDao implements Dao<StudentCourse> {
     }
 
     public boolean registerCourse(int cID, int sID) {
-
         try {
             ResultSet rst;
             Connection connection = instance.getConnection();
@@ -192,7 +191,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
             gradeQuery.setInt(1, sID);
             gradeQuery.setInt(2, cID);
             PreparedStatement firstRegistration = connection.prepareStatement
-                    ("INSERT INTO `studentcourse` (courseId,studentId)  VALUES (?,?)");
+                    ("INSERT INTO studentcourse (courseId,studentId)  VALUES (?,?)");
             firstRegistration.setInt(1, cID);
             firstRegistration.setInt(2, sID);
             rst = gradeQuery.executeQuery();
@@ -218,8 +217,8 @@ public class StudentCourseDao implements Dao<StudentCourse> {
                 courseQuery.setInt(1, id);
                 ResultSet r =  courseQuery.executeQuery();
                 if(r.next()){
-                int courseHours = r.getInt("hours");
-                totalHours+=courseHours;}
+                    int courseHours = r.getInt("hours");
+                    totalHours+=courseHours;}
             }
             return totalHours;
         }catch (SQLException e){
@@ -244,7 +243,6 @@ public class StudentCourseDao implements Dao<StudentCourse> {
             return null;
         }
     }
-
 
 }
 
