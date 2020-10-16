@@ -19,6 +19,4 @@ public interface GetTranscriptInfo {
 
     public void setCourses(ArrayList<Course> courses);
 
-
-
 }
