@@ -73,10 +73,10 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
                 sc.setCourseCode(String.valueOf(rs.getFloat(4)));
                 courses.add(sc);
             }
+            setCourses(courses);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        setCourses(courses);
     }
 
     @Override
