@@ -5,9 +5,6 @@ import com.fcicb.domain.StudentCourse;
 import com.fcicb.jdbc.DatabaseConnection;
 
 import java.sql.*;
-
-import com.fcicb.domain.Course;
-
 import java.util.ArrayList;
 
 public class GetTranscriptInfoImp implements GetTranscriptInfo {
@@ -48,10 +45,11 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
     @Override
     public void queryCourseInfo(int id) {
         String sqlQuery2 = "  SELECT studentCourse.courseId, grade,(SELECT name FROM course as name  WHERE studentCourse.courseId = id ),\n" +
-                "                (SELECT code FROM course as code\n" +
-                "        WHERE studentCourse.courseId = id)\n" +
-                "                FROM studentCourse, student\n" +
-                "                 WHERE student.id = 28 AND student.id = studentCourse.studentId; ";
+                           "  (SELECT code FROM course as code\n" +
+                           "  WHERE studentCourse.courseId = id)\n" +
+                           "  FROM studentCourse, student\n" +
+                           "  WHERE student.id = ? AND student.id = studentCourse.studentId; ";
+
         courses = new ArrayList<>();
 
         try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery2)) {
