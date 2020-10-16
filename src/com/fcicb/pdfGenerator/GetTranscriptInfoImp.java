@@ -54,7 +54,8 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     @Override
     public void queryCourseInfo(int id) {
-        String sqlQuery3 = "  SELECT studentCourse.courseId, grade,(SELECT name FROM course as name  WHERE studentCourse.courseId = id ),\n" +
+        String sqlQuery3 = "  SELECT studentCourse.courseId, grade," +
+                           "  (SELECT name FROM course as name  WHERE studentCourse.courseId = id ),\n" +
                            "  (SELECT code FROM course as code\n" +
                            "  WHERE studentCourse.courseId = id)\n" +
                            "  FROM studentCourse, student\n" +
