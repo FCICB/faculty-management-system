@@ -250,7 +250,24 @@ public class StudentDao implements Dao<Student> {
         }
         return false;
     }
+    public int getId(Principal userPrincipal) {
 
+        ResultSet rst;
+        try {
+            Connection connection = instance.getConnection();
+            PreparedStatement yourID = connection.prepareStatement("SELECT id from student  where username = ?");
+            yourID.setString(1, userPrincipal.toString());
+            rst = yourID.executeQuery();
+
+            if(rst.next()){
+                int id = rst.getInt(1);
+                return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  0;
+    }
 
 }
 

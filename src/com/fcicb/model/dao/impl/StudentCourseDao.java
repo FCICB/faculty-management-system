@@ -1,9 +1,11 @@
 package com.fcicb.model.dao.impl;
 
+import com.fcicb.domain.Course;
 import com.fcicb.domain.StudentCourse;
 import com.fcicb.jdbc.DatabaseConnection;
 import com.fcicb.model.dao.Dao;
 
+import java.security.Principal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,14 +16,12 @@ import java.util.List;
 public class StudentCourseDao implements Dao<StudentCourse> {
 
     DatabaseConnection instance = DatabaseConnection.getInstance();
-
     public List<StudentCourse> reviewPassCourses(int id)
     {
         ResultSet rst;
         List<StudentCourse> list = new ArrayList<>();
         Connection connection;
         PreparedStatement getCourses;
-
         try {
             connection = instance.getConnection();
             getCourses= connection.prepareStatement("SELECT code, name, grade FROM studentCourse inner join course on\n" +
@@ -31,10 +31,11 @@ public class StudentCourseDao implements Dao<StudentCourse> {
                     "where grade >=50 and studentId = ?;");
             getCourses.setInt(1,id);
             rst = getCourses.executeQuery();
-
             while (rst.next())
             {
+
                 list.add(new StudentCourse(rst.getString(1),rst.getString(2),rst.getInt(3)));
+
             }
         }
         catch (SQLException e)
@@ -186,20 +187,20 @@ public class StudentCourseDao implements Dao<StudentCourse> {
             ResultSet rst;
             Connection connection = instance.getConnection();
             PreparedStatement gradeQuery = connection.prepareStatement
-                    ("SELECT grade FROM studentcourse WHERE studentId = ? AND courseId = ?");
+                    ("SELECT grade FROM fms.studentCourse WHERE studentId = ? AND courseId = ?");
             gradeQuery.setInt(1, sID);
             gradeQuery.setInt(2, cID);
             PreparedStatement courseQuery = connection.prepareStatement
-                    ("UPDATE studentcourse SET grade=null WHERE studentId = ? AND courseId = ?");
-            gradeQuery.setInt(1, sID);
-            gradeQuery.setInt(2, cID);
+                    ("UPDATE studentCourse SET grade=0 WHERE studentId = ? AND courseId = ?");
+            courseQuery.setInt(1, sID);
+            courseQuery.setInt(2, cID);
             PreparedStatement firstRegistration = connection.prepareStatement
-                    ("INSERT INTO studentcourse (courseId,studentId)  VALUES (?,?)");
+                    ("INSERT INTO studentCourse (courseId,studentId)  VALUES (?,?)");
             firstRegistration.setInt(1, cID);
             firstRegistration.setInt(2, sID);
             rst = gradeQuery.executeQuery();
             if (rst.next()) {
-                courseQuery.executeQuery();
+                courseQuery.executeUpdate();
                 return true;
             } else {
                 int result = firstRegistration.executeUpdate();
@@ -231,7 +232,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
     }
 
     public ArrayList<String> showAvailableCourses(int level){
-        ArrayList<String> availableCourses = new ArrayList<>();
+        ArrayList<String> availableCourses = new ArrayList<String>();
         try{
             Connection connection = instance.getConnection();
             PreparedStatement courseQuery = connection.prepareStatement("SELECT name FROM course WHERE level = ?");
@@ -247,5 +248,64 @@ public class StudentCourseDao implements Dao<StudentCourse> {
         }
     }
 
+    public int getId(Principal userPrincipal) {
+
+        ResultSet rst;
+        try {
+            Connection connection = instance.getConnection();
+            PreparedStatement yourID = connection.prepareStatement("SELECT id from student  where username = ?");
+            yourID.setString(1, userPrincipal.toString());
+            rst = yourID.executeQuery();
+
+            if(rst.next()){
+                int id = rst.getInt(1);
+                return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  0;
+    }
+    public int getLevel(Principal userPrincipal) {
+
+        ResultSet rst;
+        try {
+            Connection connection = instance.getConnection();
+            PreparedStatement yourLevel = connection.prepareStatement("SELECT level from student  where username = ?");
+            yourLevel.setString(1, userPrincipal.toString());
+            rst = yourLevel.executeQuery();
+
+            if(rst.next()){
+
+                int level = rst.getInt(1);
+                System.out.println(level);
+                return level;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  0;
+    }
+
+    public int getCourseId(String courseName) {
+        ResultSet rst;
+        try {
+            Connection connection = instance.getConnection();
+            //  PreparedStatement courseId = connection.prepareStatement("SELECT courseId FROM fms.studentCourse inner join  course ON fms.studentCourse.courseId = fms.course.id  where name =?");
+            PreparedStatement courseId = connection.prepareStatement("SELECT id FROM  course  where name =?");
+            courseId.setString(1, courseName);
+            rst = courseId.executeQuery();
+
+            if(rst.next()){
+
+                int id = rst.getInt(1);
+                return id;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  0;
+
+    }
 }
 

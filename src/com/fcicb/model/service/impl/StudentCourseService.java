@@ -1,10 +1,11 @@
 package com.fcicb.model.service.impl;
 
+
 import com.fcicb.domain.StudentCourse;
 import com.fcicb.model.dao.impl.StudentCourseDao;
 import com.fcicb.model.service.Service;
 
-
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class StudentCourseService implements Service<StudentCourse> {
     }
 
     public int getHour(StudentCourse studentInfo) throws SQLException {
-       return studentCourseDao.getHour(studentInfo);
+        return studentCourseDao.getHour(studentInfo);
     }
 
     @Override
@@ -64,10 +65,10 @@ public class StudentCourseService implements Service<StudentCourse> {
         return false;
     }
 
+    public boolean registerCourses(List<Integer> coursesID, int studentID){
 
-    public boolean registerCourses(ArrayList<Integer> coursesID, int studentID){
         int totalHours;
-        totalHours = studentCourseDao.calculateRegisteredHours(coursesID);
+        totalHours = studentCourseDao.calculateRegisteredHours((ArrayList<Integer>) coursesID);
         if(totalHours<=20){
             for (int id: coursesID){
                 studentCourseDao.registerCourse(id,studentID);
@@ -82,6 +83,15 @@ public class StudentCourseService implements Service<StudentCourse> {
     public ArrayList<String> showAvailableCourses(int level){
         return studentCourseDao.showAvailableCourses(level);
     }
+    public int getLevel(Principal userPrincipal) {
+        return studentCourseDao.getLevel(userPrincipal);
+    }
 
+    public int getId(Principal userPrincipal) {
+        return studentCourseDao.getId(userPrincipal);
+    }
 
+    public int getCourseId(String s) {
+        return studentCourseDao.getCourseId(s);
+    }
 }

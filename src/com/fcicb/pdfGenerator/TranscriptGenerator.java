@@ -49,7 +49,7 @@ public class TranscriptGenerator {
                 acroFields.setField("Name", queryStudentInfo.getFname() + " " + queryStudentInfo.getLname());
                 acroFields.setField("Level", String.valueOf(queryStudentInfo.getLevel()));
                 acroFields.setField("GPA", String.valueOf(queryStudentInfo.getGpa()));
-                acroFields.setField("Level", String.valueOf(queryStudentInfo.getCompletedHours()));
+                acroFields.setField("TotalHours", String.valueOf(queryStudentInfo.getCompletedHours()));
             }
 
             PdfPTable table = new PdfPTable(3);

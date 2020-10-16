@@ -126,7 +126,7 @@ public class Login implements Initializable {
     }
     public void studentview(ActionEvent event) throws IOException
     {
-        Parent tableview = FXMLLoader.load(getClass().getResource("../sample/student/studentView.fxml"));
+        Parent tableview = FXMLLoader.load(getClass().getResource("../sample/student/rigisterCourses.fxml"));
         Scene tablescene = new Scene(tableview);
         Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
         windows.setResizable(true);

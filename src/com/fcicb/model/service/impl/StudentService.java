@@ -82,5 +82,8 @@ public class StudentService implements Service<Student> {
     public boolean update(Student item) {
         return false;
     }
+    public int getId(Principal userPrincipal) {
+        return  studentDao.getId(userPrincipal);
+    }
 
-}
+    }
