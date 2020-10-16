@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="921.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fcicb.view.sample.superAdmin.AdminRegister">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="1024.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fcicb.view.sample.superAdmin.AdminRegister">
     <children>
         <VBox layoutX="41.0" layoutY="79.0" prefHeight="258.0" prefWidth="124.0" spacing="10.0">
             <children>
@@ -54,29 +54,29 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-      <VBox layoutX="503.0" layoutY="91.0" prefHeight="244.0" prefWidth="399.0">
+      <VBox layoutX="503.0" layoutY="91.0" prefHeight="244.0" prefWidth="518.0">
          <children>
-            <Label fx:id="firstvalidation" prefHeight="43.0" prefWidth="400.0" textFill="#d70808">
+            <Label fx:id="firstvalidation" prefHeight="43.0" prefWidth="520.0" textFill="#d70808">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lastvalidation" prefHeight="54.0" prefWidth="413.0" textFill="#d70e0e">
+            <Label fx:id="lastvalidation" prefHeight="54.0" prefWidth="544.0" textFill="#d70e0e">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="uservalidation" prefHeight="54.0" prefWidth="402.0" textFill="#d31010">
+            <Label fx:id="uservalidation" prefHeight="54.0" prefWidth="527.0" textFill="#d31010">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="passwordvalidation" prefHeight="52.0" prefWidth="408.0" textFill="#d01111">
+            <Label fx:id="passwordvalidation" prefHeight="52.0" prefWidth="522.0" textFill="#d01111">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="emailvalidation" prefHeight="35.0" prefWidth="431.0" textFill="#da1111">
+            <Label fx:id="emailvalidation" prefHeight="35.0" prefWidth="521.0" textFill="#da1111">
                <font>
                   <Font size="15.0" />
                </font>
