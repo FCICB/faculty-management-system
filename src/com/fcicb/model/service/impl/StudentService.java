@@ -72,8 +72,12 @@ public class StudentService implements Service<Student> {
     public List<Student> getAllStudents() {
 
         return studentDao.getAllStudents();
-
     }
+
+    public void generateTranscript(int studentID){
+         studentDao.generateTranscript(studentID);
+    }
+
     @Override
     public boolean update(Student item) {
         return false;

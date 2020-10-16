@@ -2,8 +2,11 @@ package com.fcicb.model.dao.impl;
 import com.fcicb.domain.Student;
 import com.fcicb.jdbc.DatabaseConnection;
 import com.fcicb.model.dao.Dao;
+import com.fcicb.pdfGenerator.TranscriptGenerator;
 import com.fcicb.utilities.JavaMailUtil;
+import com.itextpdf.text.DocumentException;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -210,8 +213,19 @@ public class StudentDao implements Dao<Student> {
         }
 
         return students;
-
     }
+
+    public void generateTranscript(int studentId) {
+        TranscriptGenerator transcriptGenerator = null;
+        try {
+            transcriptGenerator = new TranscriptGenerator();
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+        }
+        transcriptGenerator.generateTranscript(studentId);
+    }
+
+
     @Override
     public boolean update(Student item) {
         return false;
