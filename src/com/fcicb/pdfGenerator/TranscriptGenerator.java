@@ -82,7 +82,7 @@ public class TranscriptGenerator {
             int pagecount = 1;
             int status = column.go();
             while (ColumnText.hasMoreText(status)) {
-                status = triggerNewPage(stamper, pageSize, column, ++pagecount);
+                status = extendNewPage(stamper, pageSize, column, ++pagecount);
             }
 
             stamper.setFormFlattening(true);
@@ -96,7 +96,7 @@ public class TranscriptGenerator {
         }
     }
 
-    public int triggerNewPage(PdfStamper stamper, Rectangle pagesize, ColumnText column, int pagecount) throws DocumentException {
+    public int extendNewPage(PdfStamper stamper, Rectangle pagesize, ColumnText column, int pagecount) throws DocumentException {
         stamper.insertPage(pagecount, pagesize);
         PdfContentByte canvas = stamper.getOverContent(pagecount);
         column.setCanvas(canvas);

@@ -53,7 +53,7 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
                 " WHERE studentCourse.id = id)\n" +
                 " FROM studentCourse, student\n" +
                 " WHERE student.id = ? AND student.id = studentCourse.id; ";
-        courses = new ArrayList<Course>();
+        courses = new ArrayList<>();
 
         try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery2)) {
             pStmt2.setInt(1, id);
