@@ -25,14 +25,14 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     @Override
     public boolean checkStudent(int id){
-        String sqlQuery1 = "SELECT studentId FROM studentCourse WHERE ";
+        String sqlQuery1 = "SELECT studentId FROM studentCourse, student WHERE student.id = ? AND student.id = studentCourse.studentId";
         try (PreparedStatement pStmt1 = connection.prepareStatement(sqlQuery1)) {
             pStmt1.setInt(1, id);
             rs = pStmt1.executeQuery();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return rs != null ? true : false;
+        return rs == null ? false : true;
 
     }
 
