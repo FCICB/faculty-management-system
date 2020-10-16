@@ -29,7 +29,6 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
             e.printStackTrace();
         }
         return rs == null ? false : true;
-
     }
 
     @Override

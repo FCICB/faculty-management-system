@@ -217,18 +217,19 @@ public class StudentDao implements Dao<Student> {
 
     public void generateTranscript(int studentId) {
         TranscriptGenerator transcriptGenerator = null;
-        boolean isStudentAvailable = false;
+        boolean isStudentAvailable;
         try {
             transcriptGenerator = new TranscriptGenerator();
+            isStudentAvailable = transcriptGenerator.isStudentInfoAvailable(studentId);
+            if(isStudentAvailable){
+                transcriptGenerator.generateTranscript(studentId);
+            }else{
+                System.out.println("student registered no courses yet !");
+            }
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
-        isStudentAvailable = transcriptGenerator.isStudentInfoAvailable(studentId);
-        if(isStudentAvailable){
-            transcriptGenerator.generateTranscript(studentId);
-        }else{
-            System.out.println("student registered no courses yet !");
-        }
+
     }
 
 
