@@ -93,7 +93,7 @@ public class AdminDashBoard  implements Initializable ,admin {
     }
 
     public void addGrades(javafx.event.ActionEvent event) throws IOException {
-        Parent tableview = FXMLLoader.load(getClass().getResource("adminDashBoard.fxml"));
+        Parent tableview = FXMLLoader.load(getClass().getResource("addGrade.fxml"));
         Scene tablescene = new Scene(tableview);
         Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
         windows.setResizable(true);
