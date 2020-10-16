@@ -46,6 +46,7 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
             student.setGpa(rs.getFloat(3));
             student.setLevel(rs.getInt(4));
             student.setCompletedHours(rs.getInt(5));
+            setStudent(student);
         } catch (SQLException e) {
             e.printStackTrace();
         }
