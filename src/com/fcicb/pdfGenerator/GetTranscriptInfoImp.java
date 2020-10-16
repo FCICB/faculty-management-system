@@ -19,10 +19,6 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
         connection = instance.getConnection();
     }
 
-    private void connectToDatabase() {
-        Connection connection = instance.getConnection();
-    }
-
     @Override
     public boolean checkStudent(int id){
         String sqlQuery1 = "SELECT studentId FROM studentCourse, student WHERE student.id = ? AND student.id = studentCourse.studentId";
