@@ -1,10 +1,13 @@
 package com.fcicb.view.main;
 
+import com.fcicb.model.service.impl.StudentCourseService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 
 public class Main extends Application {
@@ -26,6 +29,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         // write your code here
         launch(args);
-
     }
 }

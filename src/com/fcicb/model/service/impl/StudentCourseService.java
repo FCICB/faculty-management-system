@@ -6,7 +6,11 @@ import com.fcicb.domain.StudentCourse;
 import com.fcicb.model.dao.impl.StudentCourseDao;
 import com.fcicb.model.service.Service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentCourseService implements Service<StudentCourse> {
@@ -62,6 +66,25 @@ public class StudentCourseService implements Service<StudentCourse> {
     @Override
     public boolean delete(StudentCourse item) {
         return false;
+    }
+
+    public boolean registerCourses(List<Integer> coursesID, int studentID){
+
+        int totalHours;
+        totalHours = studentCourseDao.calculateRegisteredHours(coursesID);
+        if(totalHours<=20){
+            for (int id: coursesID){
+                studentCourseDao.registerCourse(id,studentID);
+            }
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public ArrayList<String> showAvailableCourses(int level){
+        return studentCourseDao.showAvailableCourses(level);
     }
 
 }

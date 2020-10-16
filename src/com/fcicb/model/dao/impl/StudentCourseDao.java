@@ -16,10 +16,10 @@ public class StudentCourseDao implements Dao<StudentCourse> {
     DatabaseConnection instance = DatabaseConnection.getInstance();
     public List<StudentCourse> reviewPassCourses(int id)
     {
-        ResultSet rst = null;
+        ResultSet rst;
         List<StudentCourse> list = new ArrayList<>();
-        Connection connection =null;
-        PreparedStatement getCourses =null;
+        Connection connection;
+        PreparedStatement getCourses;
         try {
             connection = instance.getConnection();
             getCourses= connection.prepareStatement("SELECT code, name, grade FROM studentCourse inner join course on\n" +
@@ -177,4 +177,71 @@ public class StudentCourseDao implements Dao<StudentCourse> {
     public boolean delete(StudentCourse item) {
         return false;
     }
+
+    public boolean registerCourse(int cID, int sID) {
+
+        try {
+            ResultSet rst;
+            Connection connection = instance.getConnection();
+            PreparedStatement gradeQuery = connection.prepareStatement
+                    ("SELECT grade FROM studentcourse WHERE studentId = ? AND courseId = ?");
+            gradeQuery.setInt(1, sID);
+            gradeQuery.setInt(2, cID);
+            PreparedStatement courseQuery = connection.prepareStatement
+                    ("UPDATE studentcourse SET grade=null WHERE studentId = ? AND courseId = ?");
+            gradeQuery.setInt(1, sID);
+            gradeQuery.setInt(2, cID);
+            PreparedStatement firstRegistration = connection.prepareStatement
+                    ("INSERT INTO `studentcourse` (courseId,studentId)  VALUES (?,?)");
+            firstRegistration.setInt(1, cID);
+            firstRegistration.setInt(2, sID);
+            rst = gradeQuery.executeQuery();
+            if (rst.next()) {
+                ResultSet r = courseQuery.executeQuery();
+                return true;
+            } else {
+                int result = firstRegistration.executeUpdate();
+                return (result == 0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public int calculateRegisteredHours(List<Integer> courses){
+        int totalHours=0;
+        try{
+            Connection connection = instance.getConnection();
+            PreparedStatement courseQuery = connection.prepareStatement("SELECT hours FROM course WHERE id = ?");
+            for (int id: courses){
+                courseQuery.setInt(1, id);
+                ResultSet r =  courseQuery.executeQuery();
+                int courseHours = r.getInt("hours");
+                totalHours+=courseHours;
+            }
+            return totalHours;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return totalHours;
+        }
+    }
+
+    public ArrayList<String> showAvailableCourses(int level){
+        ArrayList<String> availableCourses = new ArrayList<String>();
+        try{
+            Connection connection = instance.getConnection();
+            PreparedStatement courseQuery = connection.prepareStatement("SELECT name FROM course WHERE level = ?");
+            courseQuery.setInt(1, level);
+            ResultSet r =  courseQuery.executeQuery();
+            while(r.next()) {
+                availableCourses.add(r.getString("name"));
+            }
+            return availableCourses;
+        } catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
+
