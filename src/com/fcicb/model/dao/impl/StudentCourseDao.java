@@ -52,11 +52,10 @@ public class StudentCourseDao implements Dao<StudentCourse> {
         try {
             Connection connection = instance.getConnection();
             PreparedStatement insert = connection.prepareStatement(
-                    "Insert INTO `studentCourse` (id, grade, courseId, studentId) VALUES (?, ?, ?, ?)");
-            insert.setInt(1, studentInfo.getId());
-            insert.setFloat(2, studentInfo.getGrade());
-            insert.setString(3, studentInfo.getCourse().getCode());
-            insert.setInt(4, studentInfo.getStudent().getId());
+                    "Insert INTO `studentCourse` ( grade, courseId, studentId) VALUES (?, ?, ?)");
+            insert.setFloat(1, studentInfo.getGrade());
+            insert.setInt(2, studentInfo.getCourse().getId());
+            insert.setInt(3, studentInfo.getStudent().getId());
 
             result = insert.executeUpdate();
 
@@ -112,9 +111,10 @@ public class StudentCourseDao implements Dao<StudentCourse> {
         int result;
         try {
             Connection connection = instance.getConnection();
-            PreparedStatement conn = connection.prepareStatement("UPDATE `studentCourse` set grade = ? WHERE id = ? ");
+            PreparedStatement conn = connection.prepareStatement("UPDATE `studentCourse` set grade = ? WHERE studentId = ? and courseId = ?");
             conn.setFloat(1, studentInfo.getGrade());
-            conn.setInt(2, studentInfo.getId());
+            conn.setInt(2, studentInfo.getStudent().getId());
+            conn.setInt(3, studentInfo.getCourse().getId());
 
             result = conn.executeUpdate();
 

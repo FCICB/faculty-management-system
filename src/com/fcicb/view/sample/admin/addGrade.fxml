@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1066.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fcicb.view.sample.admin.AddGrade">
+    <children>
+        <BorderPane prefHeight="854.0" prefWidth="1194.0" style="-fx-background-color: #212121;">
+            <top>
+                <HBox prefHeight="37.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #e3dfde;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#dashBoard" onMouseDragEntered="#dashBoard" prefHeight="35.0" prefWidth="184.0" style="-fx-background-color: #d7d4d4; -fx-background-radius: 80;" text="Dashboard" textFill="#212121">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#addNewCourse" prefHeight="35.0" prefWidth="150.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Add New Course" textFill="#ff9800" />
+                        <Button mnemonicParsing="false" onAction="#deactivateStudent" prefHeight="35.0" prefWidth="165.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Deactivate Student " textFill="#ff9800" />
+                        <Button mnemonicParsing="false" onAction="#addGrades" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Add grades" textFill="#ff9800" />
+                        <Button layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#showALLStudents" prefHeight="35.0" prefWidth="197.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Show ALL Students" textFill="#ff9800" />
+                    </children>
+                </HBox>
+            </top>
+            <left>
+                <VBox prefHeight="840.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+            </left>
+            <right>
+                <VBox prefHeight="574.0" prefWidth="56.0" BorderPane.alignment="CENTER" />
+            </right>
+            <bottom>
+                <HBox prefHeight="20.0" prefWidth="1146.0" BorderPane.alignment="CENTER" />
+            </bottom>
+            <center>
+                <VBox prefHeight="833.0" prefWidth="1021.0" spacing="5.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane prefHeight="74.0" prefWidth="1021.0">
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="371.0" prefWidth="1021.0">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="248.0" text="Add grade" textFill="#e3dfde">
+                                    <font>
+                                        <Font name="Cortoba" size="20.0" />
+                                    </font>
+                                </Label>
+                                <VBox layoutX="124.0" layoutY="20.0" prefHeight="477.0" prefWidth="263.0" spacing="20.0" AnchorPane.leftAnchor="124.0">
+                                    <children>
+                                        <AnchorPane prefHeight="394.0" prefWidth="263.0">
+                                            <children>
+                                                <StackPane layoutY="63.0" prefHeight="41.0" prefWidth="254.0">
+                                                    <children>
+                                                        <Label alignment="CENTER" prefHeight="47.0" prefWidth="103.0" text="Course id" textFill="#ff9800">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </StackPane>
+                                                <StackPane layoutY="113.0" prefHeight="62.0" prefWidth="254.0">
+                                                    <children>
+                                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="103.0" text="student Id" textFill="#ff9800">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </StackPane>
+                                                <StackPane layoutY="245.0" prefHeight="61.0" prefWidth="256.0" />
+                                                <StackPane layoutY="400.0" prefHeight="38.0" prefWidth="255.0" />
+                                                <StackPane layoutY="185.0" prefHeight="50.0" prefWidth="264.0" fx:id="x">
+                                                    <children>
+                                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="103.0" text="grade" textFill="#ff9800">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </StackPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                    <padding>
+                                        <Insets top="20.0" />
+                                    </padding>
+                                </VBox>
+                                <VBox layoutX="392.0" layoutY="81.0" prefHeight="394.0" prefWidth="329.0" spacing="20.0" AnchorPane.leftAnchor="392.0" AnchorPane.rightAnchor="309.0">
+                                    <children>
+                                        <TextField fx:id="courseID" layoutX="10.0" layoutY="30.0" prefHeight="45.0" prefWidth="362.0" promptText="courseid" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                        <TextField fx:id="studentId" layoutX="10.0" layoutY="160.0" prefHeight="45.0" prefWidth="362.0" promptText="studentId" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                        <TextField fx:id="grade" layoutX="10.0" layoutY="95.0" prefHeight="45.0" prefWidth="362.0" promptText="grade" style="-fx-background-color: #e3dfde; -fx-background-radius: 10;" />
+                                    </children>
+                                    <padding>
+                                        <Insets top="20.0" />
+                                    </padding>
+                                </VBox>
+                                <VBox layoutX="783.0" layoutY="23.0" prefHeight="419.0" prefWidth="298.0" AnchorPane.rightAnchor="0.0">
+                                    <children>
+                                        <StackPane prefHeight="288.0" prefWidth="298.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#addGrade" prefHeight="62.0" prefWidth="230.0" style="-fx-background-color: #ff9800; -fx-background-radius: 90;" text="Add Grade" textFill="#212121">
+                                                    <font>
+                                                        <Font name="System Bold" size="18.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </StackPane>
+                                        <Label fx:id="invalid" prefHeight="44.0" prefWidth="159.0" textFill="#e80505" />
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets top="5.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </AnchorPane>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets top="10.0" />
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>
