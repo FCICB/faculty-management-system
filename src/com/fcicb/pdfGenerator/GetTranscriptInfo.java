@@ -12,6 +12,8 @@ public interface GetTranscriptInfo {
 
     public void queryCourseInfo(int id);
 
+    public boolean checkStudent(int id);
+
     public Student getStudent();
 
     public void setStudent(Student student);

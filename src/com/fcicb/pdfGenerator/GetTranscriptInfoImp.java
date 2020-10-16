@@ -24,6 +24,19 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
     }
 
     @Override
+    public boolean checkStudent(int id){
+        String sqlQuery1 = "SELECT studentId FROM studentCourse WHERE ";
+        try (PreparedStatement pStmt1 = connection.prepareStatement(sqlQuery1)) {
+            pStmt1.setInt(1, id);
+            rs = pStmt1.executeQuery();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return rs != null ? true : false;
+
+    }
+
+    @Override
     public void queryStudentInfo(int id) {
         String sqlQuery1 =  " SELECT fname, lname, GPA, level, completed_hours FROM student;" +
                 " WHERE id = ? ";
@@ -55,6 +68,7 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
         try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery2)) {
             pStmt2.setInt(1, id);
             rs = pStmt2.executeQuery();
+
             while (rs.next()) {
                 StudentCourse sc = new StudentCourse();
                 sc.setGrade(rs.getFloat(2));

@@ -75,7 +75,7 @@ public class StudentService implements Service<Student> {
     }
 
     public void generateTranscript(int studentID){
-         studentDao.generateTranscript(studentID);
+        studentDao.generateTranscript(studentID);
     }
 
     @Override

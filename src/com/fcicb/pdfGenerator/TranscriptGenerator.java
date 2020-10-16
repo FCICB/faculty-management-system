@@ -106,4 +106,8 @@ public class TranscriptGenerator {
         return column.go();
     }
 
+    public boolean isStudentInfoAvailable(int id){
+        return getTranscriptInfoImpl.checkStudent(id);
+    }
+
 }
