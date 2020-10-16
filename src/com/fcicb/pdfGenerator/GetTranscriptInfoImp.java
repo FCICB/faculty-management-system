@@ -56,8 +56,7 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
     public void queryCourseInfo(int id) {
         String sqlQuery3 = "  SELECT studentCourse.courseId, grade," +
                            "  (SELECT name FROM course as name  WHERE studentCourse.courseId = id ),\n" +
-                           "  (SELECT code FROM course as code\n" +
-                           "  WHERE studentCourse.courseId = id)\n" +
+                           "  (SELECT code FROM course as code  WHERE studentCourse.courseId = id)\n" +
                            "  FROM studentCourse, student\n" +
                            "  WHERE student.id = ? AND student.id = studentCourse.studentId; ";
 
