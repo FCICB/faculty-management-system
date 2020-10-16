@@ -197,7 +197,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
             firstRegistration.setInt(2, sID);
             rst = gradeQuery.executeQuery();
             if (rst.next()) {
-                ResultSet r = courseQuery.executeQuery();
+                courseQuery.executeQuery();
                 return true;
             } else {
                 int result = firstRegistration.executeUpdate();
@@ -209,7 +209,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
         }
     }
 
-    public int calculateRegisteredHours(List<Integer> courses){
+    public int calculateRegisteredHours(ArrayList<Integer> courses){
         int totalHours=0;
         try{
             Connection connection = instance.getConnection();
@@ -217,8 +217,9 @@ public class StudentCourseDao implements Dao<StudentCourse> {
             for (int id: courses){
                 courseQuery.setInt(1, id);
                 ResultSet r =  courseQuery.executeQuery();
+                if(r.next()){
                 int courseHours = r.getInt("hours");
-                totalHours+=courseHours;
+                totalHours+=courseHours;}
             }
             return totalHours;
         }catch (SQLException e){
@@ -228,7 +229,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
     }
 
     public ArrayList<String> showAvailableCourses(int level){
-        ArrayList<String> availableCourses = new ArrayList<String>();
+        ArrayList<String> availableCourses = new ArrayList<>();
         try{
             Connection connection = instance.getConnection();
             PreparedStatement courseQuery = connection.prepareStatement("SELECT name FROM course WHERE level = ?");
@@ -243,5 +244,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
             return null;
         }
     }
+
+
 }
 

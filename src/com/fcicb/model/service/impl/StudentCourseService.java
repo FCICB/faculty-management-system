@@ -68,8 +68,8 @@ public class StudentCourseService implements Service<StudentCourse> {
         return false;
     }
 
-    public boolean registerCourses(List<Integer> coursesID, int studentID){
 
+    public boolean registerCourses(ArrayList<Integer> coursesID, int studentID){
         int totalHours;
         totalHours = studentCourseDao.calculateRegisteredHours(coursesID);
         if(totalHours<=20){
@@ -83,7 +83,7 @@ public class StudentCourseService implements Service<StudentCourse> {
         }
     }
 
-    public ArrayList<String> showAvailableCourses(int id,int level){
+    public ArrayList<String> showAvailableCourses(int level){
         return studentCourseDao.showAvailableCourses(level);
     }
 
