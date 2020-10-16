@@ -83,8 +83,8 @@ public class StudentCourseService implements Service<StudentCourse> {
         }
     }
 
-    public ArrayList<String> showAvailableCourses(int level){
-        return studentCourseDao.showAvailableCourses(level);
+    public ArrayList<String> showAvailableCourses(int id,int level){
+        return studentCourseDao.showAvailableCourses(id,level);
     }
 
 }

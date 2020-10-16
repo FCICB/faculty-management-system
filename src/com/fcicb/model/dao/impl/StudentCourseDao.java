@@ -227,7 +227,7 @@ public class StudentCourseDao implements Dao<StudentCourse> {
         }
     }
 
-    public ArrayList<String> showAvailableCourses(int level){
+    public ArrayList<String> showAvailableCourses(int id,int level){
         ArrayList<String> availableCourses = new ArrayList<String>();
         try{
             Connection connection = instance.getConnection();
