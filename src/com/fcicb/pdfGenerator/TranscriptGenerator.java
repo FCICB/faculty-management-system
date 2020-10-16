@@ -55,7 +55,7 @@ public class TranscriptGenerator {
             PdfPTable table = new PdfPTable(3);
 
             PdfPCell CourseNameCell = new PdfPCell(new Phrase("Course Name"));
-            PdfPCell CourseHoursCell = new PdfPCell(new Phrase("Course Hours"));
+            PdfPCell CourseHoursCell = new PdfPCell(new Phrase("Course Code"));
             PdfPCell CourseGradesCell = new PdfPCell(new Phrase("Course Grades"));
 
             table.addCell(CourseNameCell);
