@@ -6,30 +6,37 @@ public class StudentCourse {
     private Student student;
     private Course course;
 
-    public StudentCourse(){
+    public StudentCourse() {
         course = new Course();
     }
 
-    public StudentCourse(String code ,String name, float grade)
-    {
-        course = new Course(code,name);
+    public StudentCourse(String code, String name, float grade) {
+        course = new Course(code, name);
         this.grade = grade;
     }
 
-    public void setCourseName(String name){
+    public void setCourseName(String name) {
         course.setName(name);
     }
 
-    public String getCourseName(){
+    public String getCourseName() {
         return course.getName();
     }
 
-    public void setCourseHours(int hours){
+    public void setCourseHours(int hours) {
         course.setHours(hours);
     }
 
-    public int getCourseHours(){
+    public int getCourseHours() {
         return course.getHours();
+    }
+
+    public String getCourseCode() {
+        return course.getCode();
+    }
+
+    public void setCourseCode(String code) {
+        course.setCode(code);
     }
 
     public float getGrade() {
