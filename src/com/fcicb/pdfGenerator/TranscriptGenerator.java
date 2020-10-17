@@ -69,11 +69,11 @@ public class TranscriptGenerator {
 
             for (StudentCourse course : courses) {
                 PdfPCell courseName = new PdfPCell(new Phrase(course.getCourseName()));
-                PdfPCell courseHours = new PdfPCell(new Phrase(String.valueOf(course.getCourseCode())));
+                PdfPCell courseCode = new PdfPCell(new Phrase((course.getCourseCode())));
                 PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(course.getGrade())));
 
                 table.addCell(courseName);
-                table.addCell(courseHours);
+                table.addCell(courseCode);
                 table.addCell(courseGrades);
             }
 
