@@ -4,10 +4,10 @@ public class StudentCourse {
     private int id;
     private float grade;
     private Student student;
-    private Course course =new Course();
+    private Course course;
 
     public StudentCourse(){
-
+        course = new Course();
     }
 
     public StudentCourse(String code ,String name, float grade)
@@ -24,12 +24,12 @@ public class StudentCourse {
         return course.getName();
     }
 
-    public void setCourseCode(String code){
-        course.setCode(code);
+    public void setCourseHours(int hours){
+        course.setHours(hours);
     }
 
-    public String getCourseCode(){
-        return course.getCode();
+    public int getCourseHours(){
+        return course.getHours();
     }
 
     public float getGrade() {

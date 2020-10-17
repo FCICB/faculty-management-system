@@ -15,6 +15,10 @@ public class Course {
 
     }
 
+    public Course(int hours) {
+        this.hours = hours;
+    }
+
     public Course( String code, String name) {
         this.code = code;
         this.name = name;

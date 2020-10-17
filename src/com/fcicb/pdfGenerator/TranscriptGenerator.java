@@ -45,7 +45,7 @@ public class TranscriptGenerator {
             Student queryStudentInfo = getTranscriptInfoImpl.getStudent();
 
             fields = acroFields.getFields();
-            if(fields != null) {
+            if (fields != null) {
                 acroFields.setField("Name", queryStudentInfo.getFname() + " " + queryStudentInfo.getLname());
                 acroFields.setField("Level", String.valueOf(queryStudentInfo.getLevel()));
                 acroFields.setField("GPA", String.valueOf(queryStudentInfo.getGpa()));
@@ -55,7 +55,7 @@ public class TranscriptGenerator {
             PdfPTable table = new PdfPTable(3);
 
             PdfPCell CourseNameCell = new PdfPCell(new Phrase("Course Name"));
-            PdfPCell CourseHoursCell = new PdfPCell(new Phrase("Course Code"));
+            PdfPCell CourseHoursCell = new PdfPCell(new Phrase("Course Hours"));
             PdfPCell CourseGradesCell = new PdfPCell(new Phrase("Course Grades"));
 
             table.addCell(CourseNameCell);
@@ -69,10 +69,10 @@ public class TranscriptGenerator {
 
             for (StudentCourse course : courses) {
                 PdfPCell courseName = new PdfPCell(new Phrase(course.getCourseName()));
-                 PdfPCell courseCode = new PdfPCell(new Phrase((course.getCourseCode())));
+                PdfPCell courseHours = new PdfPCell(new Phrase((course.getCourseHours())));
                 PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(course.getGrade())));
                 table.addCell(courseName);
-                table.addCell(courseCode);
+                table.addCell(courseHours);
                 table.addCell(courseGrades);
             }
 
@@ -105,7 +105,7 @@ public class TranscriptGenerator {
         return column.go();
     }
 
-    public boolean isStudentInfoAvailable(int id){
+    public boolean isStudentInfoAvailable(int id) {
         return getTranscriptInfoImpl.checkStudent(id);
     }
 
