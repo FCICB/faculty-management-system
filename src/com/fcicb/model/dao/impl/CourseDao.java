@@ -12,6 +12,7 @@ public class CourseDao implements Dao<Course> {
 
     ResultSet rst = null;
     @Override
+
     public boolean add(Course item){
         int result ;
         Connection connection =null;
@@ -80,6 +81,29 @@ public class CourseDao implements Dao<Course> {
 
     @Override
     public boolean update(Course item) {
+        int result;
+
+        try {
+            Connection connection = instance.getConnection();
+            PreparedStatement update = connection.prepareStatement("UPDATE course SET name = ?,hours = ?,level = ?,description = ?  WHERE code = ?");
+
+            update.setString(1,item.getName());
+            update.setInt(2,item.getHours());
+            update.setInt(3,item.getLevel());
+            update.setString(4,item.getDescription());
+            update.setString(5,item.getCode());
+
+            result = update.executeUpdate();
+            if (result != 0) {
+                System.out.println("UPDATED");
+                return true;
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
         return false;
     }
 

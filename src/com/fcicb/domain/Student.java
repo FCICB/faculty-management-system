@@ -1,6 +1,6 @@
 package com.fcicb.domain;
 
-import javax.swing.*;
+
 import java.util.Date;
 
 public class Student {
@@ -9,7 +9,8 @@ public class Student {
     private String username;
     private float gpa;
     private Date birthDate;
-    private enum  studentState { ACTIVATED, DEACTIVATED };
+
+    public enum  studentState { ACTIVATED, DEACTIVATED };
     private studentState state;
     private int level;
     private int completedHours;
@@ -20,9 +21,9 @@ public class Student {
     private int deletedBy;
     private int addedBy;
 
-    public Student(int id, String username, float gpa, Date birthDate,studentState state, int level, int completedHours,
-                   String fname, String lname, String email, String password,  int deletedBy, int addedBy) {
-        this.id = id;
+    public Student(  String username, float gpa, Date birthDate,studentState state, int level, int completedHours,
+                     String fname, String lname, String email, String password,  int deletedBy, int addedBy) {
+
         this.username = username;
         this.gpa = gpa;
         this.birthDate = birthDate;
@@ -36,7 +37,24 @@ public class Student {
         this.deletedBy = deletedBy;
         this.addedBy = addedBy;
     }
+    public Student(int id, String username, String fname, String lname, String email, String password  ) {
+        this.id = id;
+        this.username = username;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.password = password;
 
+    }
+    public Student( String username, String fname, String lname, String email, String password  ) {
+        this.id = id;
+        this.username = username;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.password = password;
+
+    }
     public Student() {
     }
 

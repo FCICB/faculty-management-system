@@ -1,7 +1,7 @@
 package com.fcicb.view.sample.admin;
 
-import com.fcicb.model.service.impl.*;
 import com.fcicb.domain.Student;
+import com.fcicb.model.service.impl.StudentService;
 import com.fcicb.view.sample.Login;
 import com.fcicb.view.sample.logout;
 import javafx.collections.FXCollections;
@@ -18,18 +18,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-
-public class AdminDashBoard  implements Initializable ,admin , logout {
-
+public class SuperAdminDashBard implements Initializable ,admin , logout {
     @FXML
     private javafx.scene.control.ComboBox comboxicon;
-    @FXML  Label invalid;
+    @FXML
+    Label invalid;
     @FXML
     TextField id, userName, firstName, lastName, password, email;
     @FXML
@@ -107,7 +105,7 @@ public class AdminDashBoard  implements Initializable ,admin , logout {
 
 
     public void dashBoard(MouseEvent mouseEvent) throws IOException {
-        Parent tableview = FXMLLoader.load(getClass().getResource("superAdminDashBard.fxml"));
+        Parent tableview = FXMLLoader.load(getClass().getResource("adminDashBoard.fxml"));
         Scene tablescene = new Scene(tableview);
         Stage windows = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         windows.setResizable(true);
@@ -200,6 +198,17 @@ public class AdminDashBoard  implements Initializable ,admin , logout {
     public void search(ActionEvent actionEvent) {
     }
 
+
+    public void addadmin(javafx.event.ActionEvent actionEvent)  throws IOException{
+        Parent tableview = FXMLLoader.load(getClass().getResource("../../sample/superAdmin/adminRegister.fxml"));
+        Scene tablescene = new Scene(tableview);
+        Stage windows = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        windows.setResizable(true);
+        windows.setScene(tablescene);
+
+        windows.show();
+
+    }
 
     @Override
     public void logout(ActionEvent event) throws IOException {

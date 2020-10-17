@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,6 +26,7 @@
                             </font>
                         </Label>
                         <Button layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="197.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Back" textFill="#ff9800" />
+                        <Button mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="83.0" text="LogOut" />
                     </children>
                 </HBox>
             </top>
@@ -48,13 +50,13 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="833.0" prefWidth="1910.0">
                                     <children>
-                                        <TableView fx:id="tableview" prefHeight="822.0" prefWidth="1905.0">
+                                        <TableView fx:id="tableview" onMouseClicked="#selected" prefHeight="822.0" prefWidth="1905.0">
                                             <columns>
                                                 <TableColumn fx:id="code" prefWidth="85.0" text="Code" />
                                                 <TableColumn fx:id="name" prefWidth="213.0" text="name" />
                                                 <TableColumn fx:id="hours" prefWidth="91.0" text="Hours" />
                                                 <TableColumn fx:id="level" prefWidth="89.0" text="level" />
-                                                <TableColumn fx:id="added" prefWidth="89.0" text="Added by" />
+                                                <TableColumn fx:id="addedby" prefWidth="89.0" text="Added by" />
                                                 <TableColumn fx:id="description" prefWidth="874.0" text="Description" />
                                             </columns>
                                         </TableView>
@@ -62,6 +64,57 @@
                                 </AnchorPane>
                             </content>
                         </ScrollPane>
+                        <HBox prefHeight="752.0" prefWidth="1035.0">
+                            <children>
+                                <VBox prefHeight="473.0" prefWidth="284.0">
+                                    <children>
+                                        <Label alignment="CENTER" prefHeight="67.0" prefWidth="315.0" text="name" textFill="#ff9800">
+                                            <font>
+                                                <Font name="System Bold" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="67.0" prefWidth="315.0" text="Hours" textFill="#ff9800">
+                                            <font>
+                                                <Font name="System Bold" size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Label alignment="CENTER" layoutX="10.0" layoutY="77.0" prefHeight="67.0" prefWidth="315.0" text="level" textFill="#ff9800">
+                                            <font>
+                                                <Font name="System Bold" size="15.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets top="10.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label alignment="CENTER" layoutX="10.0" layoutY="144.0" prefHeight="67.0" prefWidth="315.0" text="Description" textFill="#ff9800">
+                                            <font>
+                                                <Font name="System Bold" size="15.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets top="10.0" />
+                                            </padding>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox prefHeight="473.0" prefWidth="383.0" spacing="25.0" style="-fx-background-radius: 90;">
+                                    <children>
+                                        <TextField fx:id="nameUpdate" prefHeight="48.0" prefWidth="383.0" style="-fx-background-radius: 80;" />
+                                        <TextField fx:id="hoursUpdate" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="383.0" style="-fx-background-radius: 80;" />
+                                        <TextField fx:id="levelUpdate" layoutX="10.0" layoutY="83.0" prefHeight="48.0" prefWidth="383.0" style="-fx-background-radius: 80;" />
+                                        <TextField fx:id="descriptionUpdate" layoutX="10.0" layoutY="156.0" prefHeight="48.0" prefWidth="383.0" style="-fx-background-radius: 80;" />
+                                    </children>
+                                </VBox>
+                                <VBox prefHeight="473.0" prefWidth="261.0">
+                                    <children>
+                                        <StackPane prefHeight="144.0" prefWidth="261.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#update" prefHeight="52.0" prefWidth="144.0" style="-fx-background-radius: 80; -fx-background-color: #ff9800;" text="Button" />
+                                            </children>
+                                        </StackPane>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
                     </children>
                     <BorderPane.margin>
                         <Insets top="10.0" />
