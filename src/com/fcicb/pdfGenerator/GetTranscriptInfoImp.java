@@ -22,9 +22,9 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
     @Override
     public boolean checkStudent(int id){
         String sqlQuery1 = "SELECT studentId FROM studentCourse, student WHERE student.id = ? AND student.id = studentCourse.studentId";
-        try (PreparedStatement pStmt = connection.prepareStatement(sqlQuery1)) {
-            pStmt.setInt(1, id);
-            rs = pStmt.executeQuery();
+        try (PreparedStatement pStmt1 = connection.prepareStatement(sqlQuery1)) {
+            pStmt1.setInt(1, id);
+            rs = pStmt1.executeQuery();
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -33,19 +33,20 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     @Override
     public void queryStudentInfo(int id) {
-        String sqlQuery2 =  " SELECT fname, lname, GPA, level, completed_hours FROM student;" +
-                            " WHERE id = ? ";
+        String sqlQuery2 =  " SELECT fname, lname, GPA, level, completed_hours FROM student  WHERE id = ? ";
         student = new Student();
 
-        try (PreparedStatement pStmt = connection.prepareStatement(sqlQuery2)) {
-            pStmt.setInt(1, id);
-            rs = pStmt.executeQuery();
-            student.setFname(rs.getString(1));
-            student.setLname(rs.getString(2));
-            student.setGpa(rs.getFloat(3));
-            student.setLevel(rs.getInt(4));
-            student.setCompletedHours(rs.getInt(5));
-            setStudent(student);
+        try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery2)) {
+            pStmt2.setInt(1, id);
+            rs = pStmt2.executeQuery();
+            if(rs.next()) {
+                student.setFname(rs.getString(1));
+                student.setLname(rs.getString(2));
+                student.setGpa(rs.getFloat(3));
+                student.setLevel(rs.getInt(4));
+                student.setCompletedHours(rs.getInt(5));
+                setStudent(student);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,9 +62,9 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
         courses = new ArrayList<>();
 
-        try (PreparedStatement pStmt = connection.prepareStatement(sqlQuery3)) {
-            pStmt.setInt(1, id);
-            rs = pStmt.executeQuery();
+        try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery3)) {
+            pStmt2.setInt(1, id);
+            rs = pStmt2.executeQuery();
 
             while (rs.next()) {
                 StudentCourse sc = new StudentCourse();
