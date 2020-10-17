@@ -69,8 +69,8 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
             while (rs.next()) {
                 StudentCourse sc = new StudentCourse();
                 sc.setGrade(rs.getFloat(2));
-                sc.setCourseName((rs.getString(3)));
-                sc.setCourseCode((rs.getString(4)));
+                sc.setCourseName(rs.getString(3));
+                sc.setCourseCode(rs.getString(4));
                 courses.add(sc);
             }
             setCourses(courses);
