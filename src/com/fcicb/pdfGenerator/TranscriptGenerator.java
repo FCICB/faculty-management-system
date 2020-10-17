@@ -67,10 +67,10 @@ public class TranscriptGenerator {
             getTranscriptInfoImpl.queryCourseInfo(studentId);
             ArrayList<StudentCourse> courses = getTranscriptInfoImpl.getCourses();
 
-            for (StudentCourse course : courses) {
-                PdfPCell courseName = new PdfPCell(new Phrase(course.getCourseName()));
-                PdfPCell courseHours = new PdfPCell(new Phrase(String.valueOf(course.getCourseHours())));
-                PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(course.getGrade())));
+            for (StudentCourse studentCourse : courses) {
+                PdfPCell courseName = new PdfPCell(new Phrase(studentCourse.getCourse().getName()));
+                PdfPCell courseHours = new PdfPCell(new Phrase(String.valueOf(studentCourse.getCourse().getHours())));
+                PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(studentCourse.getGrade())));
                 table.addCell(courseName);
                 table.addCell(courseHours);
                 table.addCell(courseGrades);

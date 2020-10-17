@@ -23,13 +23,6 @@ public class StudentCourse {
         return course.getName();
     }
 
-    public void setCourseHours(int hours) {
-        course.setHours(hours);
-    }
-
-    public int getCourseHours() {
-        return course.getHours();
-    }
 
     public void setCourseCode(String code) {
         course.setCode(code);
