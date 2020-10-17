@@ -27,7 +27,7 @@ public class AdminDao implements Dao<Admin> {
             register.setString(4,item.getPassword());
             register.setString(5,item.getUserName());
             int rst = register.executeUpdate();
-
+//Maimai1*123@
 
             if(rst!= 0)
             {

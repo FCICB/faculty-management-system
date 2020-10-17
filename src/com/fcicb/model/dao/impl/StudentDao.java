@@ -35,14 +35,14 @@ public class StudentDao implements Dao<Student> {
             insert.setString(7, item.getFname());
             insert.setString(8, item.getLname());
             insert.setString(9, item.getEmail());
-            insert.setString(10, item.getPassword());
+            insert.setString(10,AdminDao.encode(item.getPassword()));
             insert.setInt(11, item.getAddedBy());
 
             result = insert.executeUpdate();
 
             if(result != 0)
             {
-                JavaMailUtil.sendMail(item.getEmail(), item.getPassword());
+                //JavaMailUtil.sendMail(item.getEmail(), item.getPassword());
                 return true;
             }
 
@@ -244,7 +244,8 @@ public class StudentDao implements Dao<Student> {
         try  {
             Connection connection = instance.getConnection();
             PreparedStatement reactivated = connection.prepareStatement("UPDATE  student SET password = ? WHERE username = ? ");
-            reactivated.setString(1, newpassword);
+
+            reactivated.setString(1,AdminDao.encode(newpassword) );
             reactivated.setString(2, userName.toString());
 
             result = reactivated.executeUpdate();

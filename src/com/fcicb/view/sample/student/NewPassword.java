@@ -31,11 +31,12 @@ public class NewPassword implements Initializable {
             studentService.updatePassword(userPrincipal,cofirmPasswordvalue);
             Login login =new Login();
             login.studentview(actionEvent);
-            cofirmPassword.setText("");
+            cofirmPassword.setText(" ");
         }
         else
         {
             errorConfirmation.setText("not match password");
+            cofirmPassword.setText(" ");
 
         }
 

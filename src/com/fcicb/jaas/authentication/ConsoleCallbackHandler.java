@@ -1,4 +1,5 @@
 package com.fcicb.jaas.authentication;
+import com.fcicb.model.dao.impl.AdminDao;
 import com.fcicb.view.sample.*;
 import javax.security.auth.callback.*;
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class ConsoleCallbackHandler  implements CallbackHandler {
             } else if (callback instanceof PasswordCallback) {
                 PasswordCallback passwordCallback = (PasswordCallback) callback;
              //  passwordCallback.setPassword("testpassword".toCharArray());
-               passwordCallback.setPassword(userPasswordCheck.toCharArray());
+               passwordCallback.setPassword(AdminDao.encode(userPasswordCheck).toCharArray());
           //   passwordCallback.setPassword(login.userPasswordCheck.toCharArray());
         //    passwordCallback.setPassword(String.valueOf(callbacks[1]).toCharArray());
 
