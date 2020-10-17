@@ -31,12 +31,12 @@ public class StudentCourse {
         return course.getHours();
     }
 
-    public String getCourseCode() {
-        return course.getCode();
-    }
-
     public void setCourseCode(String code) {
         course.setCode(code);
+    }
+
+    public String getCourseCode() {
+        return course.getCode();
     }
 
     public float getGrade() {
