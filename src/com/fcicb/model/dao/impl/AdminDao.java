@@ -2,9 +2,10 @@ package com.fcicb.model.dao.impl;
 import com.fcicb.domain.Admin;
 import com.fcicb.jdbc.DatabaseConnection;
 import com.fcicb.model.dao.Dao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import com.fcicb.utilities.JavaMailUtil;
+
+import java.security.Principal;
+import java.sql.*;
 import java.util.Base64;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class AdminDao implements Dao<Admin> {
             register.setString(4,item.getPassword());
             register.setString(5,item.getUserName());
             int rst = register.executeUpdate();
-
+//Maimai1*123@
 
             if(rst!= 0)
             {
@@ -75,6 +76,29 @@ public class AdminDao implements Dao<Admin> {
         return false;
     }
 
+ public boolean superAdminOrAdmin(Principal principal)
+ {
+     DatabaseConnection instance = DatabaseConnection.getInstance();
+     ResultSet result ;
 
+     try {
+         Connection connection = instance.getConnection();
+         PreparedStatement insert = connection.prepareStatement("select role from admin where username =? and role=?");
+         insert.setString(1 , principal.toString());
+         insert.setString(2 , "SUPERADMIN");
+
+
+         result = insert.executeQuery();
+
+         if(result.next())
+         {
+             return true;
+         }
+
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
+     return false;
+ }
 
 }

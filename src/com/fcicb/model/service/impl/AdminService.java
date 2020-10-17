@@ -4,6 +4,7 @@ import com.fcicb.domain.Admin;
 import com.fcicb.model.dao.impl.AdminDao;
 import com.fcicb.model.service.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 public class AdminService implements Service<Admin> {
@@ -34,5 +35,9 @@ public class AdminService implements Service<Admin> {
 
     @Override
     public boolean delete(Admin item) { return false; }
+
+    public boolean superAdminOrAdmin(Principal userPrincipal) {
+        return adminDao.superAdminOrAdmin(userPrincipal);
+    }
 }
 

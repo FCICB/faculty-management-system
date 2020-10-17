@@ -4,7 +4,7 @@ public class StudentCourse {
     private int id;
     private float grade;
     private Student student;
-    private Course course;
+    private Course course =new Course();
 
     public StudentCourse(){
 

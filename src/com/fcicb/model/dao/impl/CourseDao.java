@@ -85,14 +85,13 @@ public class CourseDao implements Dao<Course> {
 
         try {
             Connection connection = instance.getConnection();
-            PreparedStatement update = connection.prepareStatement("UPDATE course SET name = ?,hours = ?,level = ?,description = ?,added_by = ? WHERE code = ?");
+            PreparedStatement update = connection.prepareStatement("UPDATE course SET name = ?,hours = ?,level = ?,description = ?  WHERE code = ?");
 
             update.setString(1,item.getName());
             update.setInt(2,item.getHours());
             update.setInt(3,item.getLevel());
             update.setString(4,item.getDescription());
-            update.setInt(5,item.getAddedBy());
-            update.setString(6,item.getCode());
+            update.setString(5,item.getCode());
 
             result = update.executeUpdate();
             if (result != 0) {

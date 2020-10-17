@@ -1,5 +1,6 @@
 package com.fcicb.pdfGenerator;
 
+import com.fcicb.domain.Course;
 import com.fcicb.domain.Student;
 import com.fcicb.domain.StudentCourse;
 import com.itextpdf.text.*;
@@ -54,12 +55,12 @@ public class TranscriptGenerator {
             PdfPTable table = new PdfPTable(3);
 
             PdfPCell CourseNameCell = new PdfPCell(new Phrase("Course Name"));
-            PdfPCell CourseCodeCell = new PdfPCell(new Phrase("Course Code"));
-            PdfPCell CourseGradeCell = new PdfPCell(new Phrase("Course Grades"));
+            PdfPCell CourseHoursCell = new PdfPCell(new Phrase("Course Code"));
+            PdfPCell CourseGradesCell = new PdfPCell(new Phrase("Course Grades"));
 
             table.addCell(CourseNameCell);
-            table.addCell(CourseCodeCell);
-            table.addCell(CourseGradeCell);
+            table.addCell(CourseHoursCell);
+            table.addCell(CourseGradesCell);
 
             table.setHeaderRows(1);
 
@@ -68,12 +69,11 @@ public class TranscriptGenerator {
 
             for (StudentCourse course : courses) {
                 PdfPCell courseName = new PdfPCell(new Phrase(course.getCourseName()));
-                PdfPCell courseCode = new PdfPCell(new Phrase((course.getCourseCode())));
-                PdfPCell courseGrade = new PdfPCell(new Phrase(String.valueOf(course.getGrade())));
-
+                 PdfPCell courseCode = new PdfPCell(new Phrase((course.getCourseCode())));
+                PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(course.getGrade())));
                 table.addCell(courseName);
                 table.addCell(courseCode);
-                table.addCell(courseGrade);
+                table.addCell(courseGrades);
             }
 
             ColumnText column = new ColumnText(stamper.getOverContent(1));
