@@ -70,7 +70,6 @@ public class TranscriptGenerator {
                 PdfPCell courseName = new PdfPCell(new Phrase(course.getCourseName()));
                 PdfPCell courseCode = new PdfPCell(new Phrase((course.getCourseCode())));
                 PdfPCell courseGrades = new PdfPCell(new Phrase(String.valueOf(course.getGrade())));
-
                 table.addCell(courseName);
                 table.addCell(courseCode);
                 table.addCell(courseGrades);
