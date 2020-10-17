@@ -4,6 +4,8 @@ import com.fcicb.domain.Course;
 import com.fcicb.domain.Student;
 import com.fcicb.domain.StudentCourse;
 import com.fcicb.model.service.impl.StudentCourseService;
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddGrade implements Initializable , admin{
+public class AddGrade implements Initializable , admin , logout {
     @FXML
     TextField courseID,studentId,grade;
     @Override
@@ -63,6 +65,13 @@ public class AddGrade implements Initializable , admin{
         studentCourse.setStudent(std);
         studentCourseService.update(studentCourse);
 
+
+    }
+
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
 
     }
 }

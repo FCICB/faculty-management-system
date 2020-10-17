@@ -2,6 +2,8 @@ package com.fcicb.view.sample.student;
 
 import com.fcicb.model.service.impl.StudentCourseService;
 import com.fcicb.model.service.impl.StudentService;
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class  RigisterCourses implements Initializable {
+public class  RigisterCourses implements Initializable , logout {
     @FXML private ComboBox Courses;
     List<String> coursesList = new ArrayList<>();
     List<Integer> coursesIDS = new ArrayList<>();
@@ -98,5 +100,11 @@ public class  RigisterCourses implements Initializable {
         windows.setScene(tablescene);
 
         windows.show();
+    }
+
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
     }
 }

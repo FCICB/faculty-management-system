@@ -2,6 +2,8 @@ package com.fcicb.view.sample.admin;
 
 import com.fcicb.model.service.impl.*;
 import com.fcicb.domain.Student;
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +25,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 
-public class AdminDashBoard  implements Initializable ,admin {
+public class AdminDashBoard  implements Initializable ,admin , logout {
 
     @FXML
     private javafx.scene.control.ComboBox comboxicon;
@@ -199,4 +201,9 @@ public class AdminDashBoard  implements Initializable ,admin {
     }
 
 
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
+    }
 }

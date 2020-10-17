@@ -1,6 +1,8 @@
 package com.fcicb.view.sample.admin;
 
 import com.fcicb.model.service.impl.CourseService;
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ShowALLCourses implements Initializable {
+public class ShowALLCourses implements Initializable , logout {
     @FXML
     private javafx.scene.control.TableView<Course> tableview;
 
@@ -84,5 +86,11 @@ public class ShowALLCourses implements Initializable {
         hoursUpdate.setText(String.valueOf(course.getHours()));
         levelUpdate.setText(String.valueOf(course.getLevel()));
         descriptionUpdate.setText(course.getDescription());
+    }
+
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
     }
 }
