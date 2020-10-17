@@ -28,6 +28,7 @@
                         <Button mnemonicParsing="false" onAction="#deactivateStudent" prefHeight="35.0" prefWidth="165.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Deactivate Student " textFill="#ff9800" />
                         <Button mnemonicParsing="false" onAction="#addGrades" prefHeight="35.0" prefWidth="140.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Add grades" textFill="#ff9800" />
                         <Button layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#showALLStudents" prefHeight="35.0" prefWidth="197.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Show ALL Students" textFill="#ff9800" />
+                        <Button mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="80.0" text="LogOut" />
                     </children>
                 </HBox>
             </top>

@@ -176,4 +176,15 @@ public class Login implements Initializable {
     public String getTestUser(){
         return  userEmailCheck;
     }
+
+
+    public void logoutevent(ActionEvent actionEvent) throws IOException {
+        Parent tableview =  FXMLLoader.load(getClass().getResource("../../view/sample/login.fxml"));
+        Scene tablescene = new Scene(tableview);
+        Stage windows = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        windows.setResizable(true);
+        windows.setScene(tablescene);
+
+        windows.show();
+    }
 }

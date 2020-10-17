@@ -20,6 +20,7 @@
                         <Button mnemonicParsing="false" onAction="#student" prefHeight="37.0" prefWidth="161.0" style="-fx-background-radius: 80;" text="student" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#reviewCourses" prefHeight="43.0" prefWidth="231.0" style="-fx-background-radius: 80;" text="review courses" />
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#DownloadTranscript" prefHeight="43.0" prefWidth="231.0" style="-fx-background-radius: 80;" text="Download transcript" />
+                        <Button mnemonicParsing="false" onAction="#logout" prefHeight="47.0" prefWidth="93.0" text="LogOut" />
                     </children>
                 </HBox>
             </top>

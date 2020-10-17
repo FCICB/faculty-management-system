@@ -2,6 +2,8 @@ package com.fcicb.view.sample.admin;
 
 import com.fcicb.domain.Student;
 import com.fcicb.model.service.impl.StudentService;
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Reactivate implements Initializable , admin {
+public class Reactivate implements Initializable , admin , logout {
     @FXML  TableView<Student> tableview;
     @FXML  private TableColumn<Student, Integer> IDs;
     @FXML  private TableColumn<Student, String> userName;
@@ -73,5 +75,11 @@ public class Reactivate implements Initializable , admin {
 
         }
         tableview.setItems(allStudentsInTableView);
+    }
+
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
     }
 }

@@ -1,5 +1,7 @@
 package com.fcicb.view.sample.admin;
 
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -8,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ShowALLStudents implements Initializable ,admin{
+public class ShowALLStudents implements Initializable ,admin , logout {
     private final AdminDashBoard admin =new AdminDashBoard();
 
     @Override
@@ -39,5 +41,11 @@ public class ShowALLStudents implements Initializable ,admin{
 
     public void showALLStudents(ActionEvent actionEvent) throws IOException {
         admin.showALLStudents(actionEvent);
+    }
+
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
     }
 }

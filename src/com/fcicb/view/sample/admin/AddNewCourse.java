@@ -1,6 +1,8 @@
 package com.fcicb.view.sample.admin;
 import com.fcicb.domain.*;
 import com.fcicb.model.service.impl.CourseService;
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +21,7 @@ import java.net.URL;
 
 import java.util.ResourceBundle;
 
-public class AddNewCourse implements Initializable ,admin{
+public class AddNewCourse implements Initializable ,admin, logout {
 
     private final AdminDashBoard admin =new AdminDashBoard();
     @FXML private javafx.scene.control.ComboBox comboxHours;
@@ -106,5 +108,11 @@ public class AddNewCourse implements Initializable ,admin{
 
 
 
+    }
+
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
     }
 }

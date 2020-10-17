@@ -2,6 +2,9 @@ package com.fcicb.view.sample.student;
 
 import com.fcicb.domain.StudentCourse;
 import com.fcicb.model.service.impl.StudentCourseService;
+import com.fcicb.model.service.impl.StudentService;
+import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,10 +17,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import static com.fcicb.jaas.authentication.InMemoryLoginModule.userPrincipal;
-public class ReviewCourses implements Initializable {
+public class ReviewCourses implements Initializable , logout {
 
     @FXML
     ListView grade;
@@ -45,14 +49,27 @@ public class ReviewCourses implements Initializable {
     }
 
     public void showStudents(MouseEvent mouseEvent) {
+
     }
 
-    public void student(ActionEvent actionEvent) {
+    public void student(ActionEvent actionEvent) throws IOException {
+        RigisterCourses rigisterCourses =new RigisterCourses();
+        rigisterCourses.student(actionEvent);
     }
 
-    public void reviewCourses(ActionEvent actionEvent) {
+    public void reviewCourses(ActionEvent actionEvent) throws IOException {
+        RigisterCourses rigisterCourses =new RigisterCourses();
+        rigisterCourses.reviewCourses(actionEvent);
     }
 
     public void DownloadTranscript(ActionEvent actionEvent) {
+        StudentService studentService = new StudentService();
+        studentService.generateTranscript(studentService.getId(userPrincipal));
+    }
+
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
     }
 }

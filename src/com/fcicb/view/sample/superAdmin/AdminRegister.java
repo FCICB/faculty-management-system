@@ -4,6 +4,7 @@ import com.fcicb.domain.Admin;
 import com.fcicb.model.service.impl.AdminService;
 import com.fcicb.validation.DataValidation;
 import com.fcicb.view.sample.Login;
+import com.fcicb.view.sample.logout;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class AdminRegister implements Initializable {
+public class AdminRegister implements Initializable , logout {
     boolean first =false, last=false , user=false ,pass=false , emailboolean=false;
     boolean first2 =false, last2=false , user2=false ,pass2=false , emailboolean2=false;
 
@@ -64,7 +65,7 @@ public class AdminRegister implements Initializable {
 
     public void passwordValidation(MouseEvent mouseEvent) {
       pass2=  DataValidation.passwordValidation(password, passwordvalidation, "(8-20) Valid : at least one (upper,lower,numbers) \n " +
-              "No space ,valid special characters(@#$%^&+=)");
+              "No space.");
     }
 
     public void emailValidation(MouseEvent mouseEvent) {
@@ -112,4 +113,9 @@ public class AdminRegister implements Initializable {
         login.superAdminBoard(actionEvent);
     }
 
+    @Override
+    public void logout(ActionEvent event) throws IOException {
+        Login login= new Login();
+        login.logoutevent(event);
+    }
 }

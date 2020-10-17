@@ -61,7 +61,7 @@ public class DataValidation {
         boolean isPasswordFormat = true;
         String validationString = null;
 
-        if (!inputTextField.getText().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$")) {
+        if (!inputTextField.getText().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$")) {
             isPasswordFormat = false;
             validationString = validationText;
 

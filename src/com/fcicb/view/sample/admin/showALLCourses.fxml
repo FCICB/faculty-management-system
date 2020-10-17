@@ -26,6 +26,7 @@
                             </font>
                         </Label>
                         <Button layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#Back" prefHeight="35.0" prefWidth="197.0" style="-fx-background-radius: 8; -fx-background-color: #e0dddd;" text="Back" textFill="#ff9800" />
+                        <Button mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="83.0" text="LogOut" />
                     </children>
                 </HBox>
             </top>
