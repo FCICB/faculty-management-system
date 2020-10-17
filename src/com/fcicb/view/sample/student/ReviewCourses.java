@@ -1,6 +1,5 @@
 package com.fcicb.view.sample.student;
 
-import com.fcicb.domain.Course;
 import com.fcicb.domain.StudentCourse;
 import com.fcicb.model.service.impl.StudentCourseService;
 import javafx.collections.FXCollections;

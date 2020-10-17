@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.fcicb.jaas.authentication.ConsoleCallbackHandler;
+import com.fcicb.model.service.impl.AdminService;
 import com.fcicb.model.service.impl.StudentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -44,7 +45,17 @@ public class Login implements Initializable {
         windows.show();
 
     }
+    public void superAdminBoard(javafx.event.ActionEvent event) throws IOException
+    {
+        Parent tableview = FXMLLoader.load(getClass().getResource("admin/superAdminDashBard.fxml"));
+        Scene tablescene = new Scene(tableview);
+        Stage windows = (Stage)((Node)event.getSource()).getScene().getWindow();
+        windows.setResizable(true);
+        windows.setScene(tablescene);
 
+        windows.show();
+
+    }
     final   public   boolean adminOrNot()
     {
         if (admin.isSelected())
@@ -92,6 +103,10 @@ public class Login implements Initializable {
             }
             else if (adminOrNot())
             {
+                AdminService adminService = new AdminService();
+                if (adminService.superAdminOrAdmin(userPrincipal))
+                    superAdminBoard(event) ;
+                else
                 login.validateData(event);
             }
             else

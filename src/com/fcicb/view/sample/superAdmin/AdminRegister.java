@@ -3,6 +3,7 @@ package com.fcicb.view.sample.superAdmin;
 import com.fcicb.domain.Admin;
 import com.fcicb.model.service.impl.AdminService;
 import com.fcicb.validation.DataValidation;
+import com.fcicb.view.sample.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -103,5 +106,10 @@ public class AdminRegister implements Initializable {
 
     }
 
+
+    public void back(ActionEvent actionEvent) throws IOException {
+        Login login = new Login();
+        login.superAdminBoard(actionEvent);
+    }
 
 }

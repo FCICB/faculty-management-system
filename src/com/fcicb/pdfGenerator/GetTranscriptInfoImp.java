@@ -70,7 +70,7 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
                 StudentCourse sc = new StudentCourse();
                 sc.setGrade(rs.getFloat(2));
                 sc.setCourseName(rs.getString(3));
-                sc.setCourseCode(rs.getString(4));
+               sc.setCourseCode(rs.getString(4));
                 courses.add(sc);
             }
             setCourses(courses);

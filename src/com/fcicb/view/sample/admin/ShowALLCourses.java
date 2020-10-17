@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -31,7 +32,7 @@ public class ShowALLCourses implements Initializable {
     @FXML  private TableColumn<Course, Integer> level;
     @FXML  private TableColumn<Course, String> description;
     @FXML  private TableColumn<Course, Integer> added;
-
+  @FXML  TextField nameUpdate ,hoursUpdate,levelUpdate,descriptionUpdate;
 
 
     private final AdminDashBoard admin =new AdminDashBoard();
@@ -50,7 +51,7 @@ public class ShowALLCourses implements Initializable {
         hours.setCellValueFactory(new PropertyValueFactory<Course, Integer>("hours"));
         level.setCellValueFactory(new PropertyValueFactory<Course, Integer>("level"));
         description.setCellValueFactory(new PropertyValueFactory<Course, String>("description"));
-        added.setCellValueFactory(new PropertyValueFactory<Course, Integer>("added"));
+        //added.setCellValueFactory(new PropertyValueFactory<Course, Integer>("added"));
         tableview.setItems(allCourses);
 
 
@@ -67,5 +68,21 @@ public class ShowALLCourses implements Initializable {
         windows.show();
 
 
+    }
+    Course course = new Course();
+    public void update(ActionEvent actionEvent) {
+        CourseService courseService =new CourseService();
+
+        Course course2 = new Course(course.getCode(), nameUpdate.getText(), Integer.parseInt(hoursUpdate.getText()),Integer.parseInt(levelUpdate.getText()),descriptionUpdate.getText(),course.getAddedBy());
+        courseService.update(course2);
+    }
+
+    public void selected(MouseEvent mouseEvent) {
+
+      course = tableview.getSelectionModel().getSelectedItem();
+        nameUpdate.setText(course.getName());
+        hoursUpdate.setText(String.valueOf(course.getHours()));
+        levelUpdate.setText(String.valueOf(course.getLevel()));
+        descriptionUpdate.setText(course.getDescription());
     }
 }

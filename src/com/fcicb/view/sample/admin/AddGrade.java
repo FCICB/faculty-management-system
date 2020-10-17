@@ -4,7 +4,6 @@ import com.fcicb.domain.Course;
 import com.fcicb.domain.Student;
 import com.fcicb.domain.StudentCourse;
 import com.fcicb.model.service.impl.StudentCourseService;
-import com.fcicb.model.service.impl.StudentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
