@@ -11,11 +11,11 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     private Student student;
     private ArrayList<StudentCourse> courses;
-    private DatabaseConnection instance = DatabaseConnection.getInstance();
-    private Connection connection;
+    private final Connection connection;
     private ResultSet rs;
 
     public GetTranscriptInfoImp() {
+        DatabaseConnection instance = DatabaseConnection.getInstance();
         connection = instance.getConnection();
     }
 

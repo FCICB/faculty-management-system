@@ -231,17 +231,24 @@ public class StudentCourseDao implements Dao<StudentCourse> {
         }
     }
 
-    public ArrayList<String> showAvailableCourses(int level){
-        ArrayList<String> availableCourses = new ArrayList<String>();
+    public ArrayList<String> showAvailableCourses(int sID, int level){
+        ArrayList<String> AvailableCourses = new ArrayList<>();
         try{
             Connection connection = instance.getConnection();
-            PreparedStatement courseQuery = connection.prepareStatement("SELECT name FROM course WHERE level = ?");
+            PreparedStatement courseQuery = connection.prepareStatement("SELECT name and id FROM course WHERE level = ?");
             courseQuery.setInt(1, level);
             ResultSet r =  courseQuery.executeQuery();
-            while(r.next()) {
-                availableCourses.add(r.getString("name"));
+            while(r.next()){
+                PreparedStatement gradeQuery = connection.prepareStatement
+                        ("SELECT grade FROM studentCourse WHERE studentId = ? AND courseId = ?");
+                gradeQuery.setInt(1, sID);
+                gradeQuery.setInt(2, r.getInt("id"));
+                ResultSet r2 =  gradeQuery.executeQuery();
+                if(r2.getFloat("grade")<50){
+                    AvailableCourses.add(r.getString("name"));
+                }
             }
-            return availableCourses;
+            return AvailableCourses;
         } catch (SQLException e){
             e.printStackTrace();
             return null;
