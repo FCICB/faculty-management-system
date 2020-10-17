@@ -1,6 +1,5 @@
 package com.fcicb.pdfGenerator;
 
-import com.fcicb.domain.Course;
 import com.fcicb.domain.Student;
 import com.fcicb.domain.StudentCourse;
 import com.itextpdf.text.*;
