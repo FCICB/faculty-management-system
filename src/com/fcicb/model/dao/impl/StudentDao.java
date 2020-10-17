@@ -42,7 +42,7 @@ public class StudentDao implements Dao<Student> {
 
             if(result != 0)
             {
-                //JavaMailUtil.sendMail(item.getEmail(), item.getPassword());
+                 JavaMailUtil.sendMail(item.getEmail(),AdminDao.encode(item.getPassword()));
                 return true;
             }
 

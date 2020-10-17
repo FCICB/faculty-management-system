@@ -24,7 +24,7 @@ public class JavaMailUtil {
 
         Properties gmailCredentials = new Properties();
 
-        try ( FileReader file = new FileReader("resources\\config.properties")) {
+        try ( FileReader file = new FileReader("resources//config.properties")) {
             gmailCredentials.load(file);
         }
          catch (IOException e) {
@@ -59,7 +59,7 @@ public class JavaMailUtil {
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject("Email Configuration");
 
-            String content = new String (Files.readAllBytes(Paths.get("src\\com\\fcicb\\utilities\\EmailMessage.html").toAbsolutePath()));
+            String content = new String (Files.readAllBytes(Paths.get("src//com//fcicb//utilities//EmailMessage.html").toAbsolutePath()));
             content+=defaultPassword;
             message.setContent(content,"text/html");
 
