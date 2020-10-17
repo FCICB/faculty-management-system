@@ -105,7 +105,7 @@ public class AdminDashBoard  implements Initializable ,admin {
 
 
     public void dashBoard(MouseEvent mouseEvent) throws IOException {
-        Parent tableview = FXMLLoader.load(getClass().getResource("adminDashBoard.fxml"));
+        Parent tableview = FXMLLoader.load(getClass().getResource("superAdminDashBard.fxml"));
         Scene tablescene = new Scene(tableview);
         Stage windows = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         windows.setResizable(true);
