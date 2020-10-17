@@ -28,7 +28,8 @@ public class  RigisterCourses implements Initializable {
         //ArrayList<String>
          ArrayList<String> options;
        StudentCourseService studentCourseService = new StudentCourseService();
-        options= studentCourseService.showAvailableCourses(studentCourseService.getLevel(userPrincipal));
+        StudentService studentService = new StudentService();
+        options= studentCourseService.showAvailableCourses(studentService.getId(userPrincipal), studentCourseService.getLevel(userPrincipal));
         Courses.getItems().addAll(options);
        // listView.getItems().addAll("menna", "mariam","mohamed");
        /* for (String s : coursesList ) {
