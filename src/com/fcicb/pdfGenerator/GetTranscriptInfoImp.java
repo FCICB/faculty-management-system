@@ -33,19 +33,20 @@ public class GetTranscriptInfoImp implements GetTranscriptInfo {
 
     @Override
     public void queryStudentInfo(int id) {
-        String sqlQuery2 =  " SELECT fname, lname, GPA, level, completed_hours FROM student;" +
-                            " WHERE id = ? ";
+        String sqlQuery2 =  " SELECT fname, lname, GPA, level, completed_hours FROM student  WHERE id = ? ";
         student = new Student();
 
-        try (PreparedStatement pStmt1 = connection.prepareStatement(sqlQuery2)) {
-            pStmt1.setInt(1, id);
-            rs = pStmt1.executeQuery();
-            student.setFname(rs.getString(1));
-            student.setLname(rs.getString(2));
-            student.setGpa(rs.getFloat(3));
-            student.setLevel(rs.getInt(4));
-            student.setCompletedHours(rs.getInt(5));
-            setStudent(student);
+        try (PreparedStatement pStmt2 = connection.prepareStatement(sqlQuery2)) {
+            pStmt2.setInt(1, id);
+            rs = pStmt2.executeQuery();
+            if(rs.next()) {
+                student.setFname(rs.getString(1));
+                student.setLname(rs.getString(2));
+                student.setGpa(rs.getFloat(3));
+                student.setLevel(rs.getInt(4));
+                student.setCompletedHours(rs.getInt(5));
+                setStudent(student);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
